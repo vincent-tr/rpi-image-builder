@@ -7,8 +7,8 @@ wget --trust-server-names https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/mas
 
 ## References
 * qemu
- * https://azeria-labs.com/emulate-raspberry-pi-with-qemu/
- * https://blog.agchapman.com/using-qemu-to-emulate-a-raspberry-pi/
- * https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki
+  * https://azeria-labs.com/emulate-raspberry-pi-with-qemu/
+  * https://blog.agchapman.com/using-qemu-to-emulate-a-raspberry-pi/
+  * https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki
 * config
- * https://elinux.org/RPiconfig#Network
+  * https://elinux.org/RPiconfig#Network
