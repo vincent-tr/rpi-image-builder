@@ -12,22 +12,25 @@ mkdir build-xx
 cd build-xx
 unzip ../sources/2017-09-07-raspbian-stretch-lite.zip
 mv 2017-09-07-raspbian-stretch-lite.img target.img
-ln -s ../sources/kernel-qemu-4.4.34-jessie kernel-qemu
+# ln -s ../sources/kernel-qemu-4.4.34-jessie kernel-qemu
 mkdir mnt
-sudo mount -v -o offset=48234496 -t ext4 target.img mnt
-...
+# fdisk -l target.img
+# sudo mount -v -o offset=$((94208*512)) -t ext4 target.img mnt
+sudo mount -v -o offset=$((8192*512)) -t vfat target.img mnt
+sudo touch mnt/ssh
 sudo umount mnt
+sudo mount -v -o offset=$((8192*512)),ro -t vfat target.img mnt
 
-qemu-system-arm -kernel kernel-qemu \
-                  -cpu arm1176 \
-                  -m 256 \
-                  -M versatilepb \
-                  -no-reboot \
-                  -vnc :0 \
-                  -serial stdio \
-                  -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw init=/bin/bash" \
-                  -d guest_errors \
-                  -drive format=raw,file=target.img
+qemu-system-arm \
+  -M raspi2 \
+  -kernel raspi-boot/kernel7.img \
+  -dtb raspi-boot/bcm2709-rpi-2-b.dtb \
+  -sd target.img \
+  -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootfstype=ext4" \
+  -no-reboot \
+  -vnc :0 \
+  -serial stdio
+
 ```
 
 ## References94208
