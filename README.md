@@ -20,6 +20,9 @@ sudo mount -v -o offset=$((8192*512)) -t vfat target.img mnt
 sudo touch mnt/ssh
 sudo umount mnt
 sudo mount -v -o offset=$((8192*512)),ro -t vfat target.img mnt
+mkdir raspi-boot
+cp -r mnt/* raspi-boot/
+sudo umount mnt
 
 qemu-system-arm \
   -M raspi2 \
