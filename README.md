@@ -2,6 +2,7 @@
 Raspberry PI image builder
 
 ## Setup
+```
 mkdir sources
 cd sources
 wget --trust-server-names https://downloads.raspberrypi.org/raspbian_lite_latest
@@ -27,6 +28,7 @@ qemu-system-arm -kernel kernel-qemu \
                   -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw init=/bin/bash" \
                   -d guest_errors \
                   -drive format=raw,file=target.img
+```
 
 ## References94208
 * qemu
