@@ -41,7 +41,7 @@ qemu-system-arm \
   -initrd rpi-boot/boot/initramfs-rpi2 \
   -dtb rpi-boot/bcm2709-rpi-2-b.dtb \
   -drive if=sd,format=raw,file=target.img \
-  -append "earlyprintk loglevel=8 modules=loop,squashfs,sd-mod,usb-storage quiet dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1" \
+  -append "earlyprintk loglevel=8 $(cat rpi-boot/cmdline.txt)" \
   -no-reboot \
   -vnc :0 \
   -serial stdio \
