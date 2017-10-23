@@ -17,7 +17,7 @@ apk add --no-cache --virtual .build-utils gcc g++ make git pkgconfig perl \
     cd $BUILD_DIRECTORY/src/inspircd && \
     ./configure --disable-interactive --binary-dir=/usr/bin --module-dir=/usr/lib/inspircd --config-dir=/etc/inspircd --data-dir=/var/run --log-dir=/var/log && \
     # Run build multi-threaded
-    make -j4 && \
+    make -j`getconf _NPROCESSORS_ONLN` && \
     make install && \
     # Uninstall all unnecessary tools after build process
     apk del .build-utils
