@@ -38,4 +38,6 @@ chown -R inspircd /conf/
 ```
 
 ## References:
+ * https://wiki.alpinelinux.org/wiki/APKBUILD_examples:Simple
  * https://github.com/inspircd/inspircd-docker/blob/master/Dockerfile
+ * https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=inspircd
