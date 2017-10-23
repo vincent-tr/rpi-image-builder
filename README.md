@@ -93,5 +93,10 @@ qemu-system-arm \
   * https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki/Emulating-Jessie-image-with-4.x.xx-kernel
 * config
   * https://elinux.org/RPiconfig#Network
+* alpine package management
+  * https://wiki.alpinelinux.org/wiki/Creating_an_Alpine_package
+  * https://wiki.alpinelinux.org/wiki/APKBUILD_examples:Simple
+  * https://engineering.fundingcircle.com/blog/2015/04/28/create-alpine-linux-repository/
+
 
 qemu-img resize target.img 4G
