@@ -23,12 +23,14 @@ sudo mount -v -o offset=$((8192*512)),ro -t vfat target.img mnt
 mkdir raspi-boot
 cp -r mnt/* raspi-boot/
 sudo umount mnt
+# add 1GO to device size
+dd if=/dev/zero bs=1M count=1024 >> target.img
 
 qemu-system-arm \
   -M raspi2 \
   -kernel raspi-boot/kernel7.img \
   -dtb raspi-boot/bcm2709-rpi-2-b.dtb \
-  -sd target.img \
+  -drive if=sd,format=raw,file=target.img \
   -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootfstype=ext4" \
   -no-reboot \
   -vnc :0 \
@@ -44,3 +46,5 @@ qemu-system-arm \
   * https://github.com/dhruvvyas90/qemu-rpi-kernel/wiki/Emulating-Jessie-image-with-4.x.xx-kernel
 * config
   * https://elinux.org/RPiconfig#Network
+
+qemu-img resize target.img 4G
