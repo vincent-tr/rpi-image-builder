@@ -4,36 +4,28 @@
 
 ```
 BUILD_DIRECTORY=~
+VERSION=v2.0.24
 apk add --no-cache --virtual .build-utils gcc g++ make git pkgconfig perl \
        perl-net-ssleay perl-crypt-ssleay perl-lwp-protocol-https \
-       perl-libwww wget gnutls-dev && \
+       perl-libwww wget && \
 # Install all permanent packages as long-therm dependencies
-    apk add --no-cache --virtual .dependencies libgcc libstdc++ gnutls gnutls-utils && \
-    mkdir -p $BUILD_DIRECTORY/src $BUILD_DIRECTORY/conf $BUILD_DIRECTORY/build && \
+    apk add --no-cache --virtual .dependencies libgcc libstdc++ && \
+    mkdir -p $BUILD_DIRECTORY/src && \
     cd $BUILD_DIRECTORY/src && \
     # Clone the requested version
     git clone https://github.com/inspircd/inspircd.git inspircd --depth 1 -b $VERSION && \
     cd $BUILD_DIRECTORY/src/inspircd && \
-    # Add and overwrite modules
-    { [ $(ls $BUILD_DIRECTORY/src/modules/ | wc -l) -gt 0 ] && cp -r $BUILD_DIRECTORY/src/modules/* $BUILD_DIRECTORY/src/inspircd/src/modules/ || echo "No modules overwritten/added by repository"; } && \
-    # Enable GNUtls with SHA256 fingerprints
-    ./configure --enable-extras=m_ssl_gnutls.cpp $CONFIGUREARGS && \
-    ./configure --disable-interactive --prefix=$BUILD_DIRECTORY/build/ \
-        --with-cc='c++ -DINSPIRCD_GNUTLS_ENABLE_SHA256_FINGERPRINT' && \
+    ./configure --disable-interactive --binary-dir=/usr/bin --module-dir=/usr/lib/inspircd --config-dir=/etc/inspircd --data-dir=/var/run --log-dir=/var/log && \
     # Run build multi-threaded
-    make -j`getconf _NPROCESSORS_ONLN` && \
+    make -j4 && \
     make install && \
     # Uninstall all unnecessary tools after build process
-    apk del .build-utils && \
-    # Keep example configs as good reference for users
-    cp -r $BUILD_DIRECTORY/build/conf/examples/ $BUILD_DIRECTORY/conf && \
-    rm -rf $BUILD_DIRECTORY/src && \
-    rm -rf $BUILD_DIRECTORY/build/conf
+    apk del .build-utils
 ```
 
 ## TODO package for apk:
 ```
-# deps : libgcc libstdc++ gnutls gnutls-utils
+# deps : libgcc libstdc++
 
 # Make sure the application is allowed to write to it's own direcotry for
 # logging and generation of certificates
