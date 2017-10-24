@@ -15,7 +15,7 @@ apk add --no-cache --virtual .build-utils gcc g++ make git pkgconfig perl \
     # Clone the requested version
     git clone https://github.com/inspircd/inspircd.git inspircd --depth 1 -b $VERSION && \
     cd $BUILD_DIRECTORY/src/inspircd && \
-    ./configure --disable-interactive --binary-dir=/usr/bin --module-dir=/usr/lib/inspircd --config-dir=/etc/inspircd --data-dir=/var/run --log-dir=/var/log && \
+    ./configure --uid=0 --disable-interactive --enable-epoll --prefix=/usr/lib/inspircd --binary-dir=/usr/bin --module-dir=/usr/lib/inspircd/modules --config-dir=/etc/inspircd --data-dir=/var/lib/inspircd --log-dir=/var/log/inspircd && \
     # Run build multi-threaded
     make -j`getconf _NPROCESSORS_ONLN` && \
     make install && \
