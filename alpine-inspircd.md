@@ -42,3 +42,4 @@ chown -R inspircd /conf/
  * https://wiki.alpinelinux.org/wiki/APKBUILD_examples:Simple
  * https://github.com/inspircd/inspircd-docker/blob/master/Dockerfile
  * https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=inspircd
+ * https://github.com/kylef-archive/ark/tree/master/inspircd
