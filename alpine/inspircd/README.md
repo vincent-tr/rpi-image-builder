@@ -13,6 +13,7 @@ su - builder
 # restore ~/.abuild
 ```
 
+## Build package
 
 ```
 su - builder
@@ -26,7 +27,6 @@ abuild -r
 
 sudo apk del .inspircd-build
 ```
-
 
 ## References:
  * https://github.com/thepaul/inspircd-deb/blob/master/debian/inspircd.init
