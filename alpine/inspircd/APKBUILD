@@ -41,6 +41,7 @@ package() {
   cd "$srcdir/inspircd-$pkgver"
   make DESTDIR="$pkgdir" install
 
+  rm -rf "$pkgdir"/usr/lib/inspircd/inspircd
   rm -rf "$pkgdir"/usr/lib/inspircd/logs
   rm -rf "$pkgdir"/usr/lib/inspircd/data
 }
