@@ -53,6 +53,8 @@ ps
 cat /var/log/inspircd/startup.log
 # stop it
 kill -SIGTERM $(cat /var/run/inspircd/inspircd.pid)
+
+# TODO: tester scripts init.d (pas possible dans docker)
 ```
 
 ## References:
