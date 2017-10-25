@@ -14,7 +14,7 @@ source="
   ${pkgname}-${pkgver}.tar.gz::https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz
   inspircd.confd
   inspircd.initd
-"
+  "
 builddir="$srcdir/inspircd-$pkgver"
 
 prepare() {
