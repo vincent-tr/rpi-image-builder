@@ -24,8 +24,12 @@ wget APKBUILD inspircd.* # TODO
 abuild checksum
 abuild -r
 
-
+# remove build tools
 sudo apk del .inspircd-build
+
+# install package
+sudo apk add --allow-untrusted ~/packages/builder/x86_64/inspircd-2.0.24-r0.apk
+
 ```
 
 ## References:
