@@ -36,9 +36,18 @@ wget http://home-resources.mti-team2.dyndns.org/static/inspircd.conf.rpi2-home-e
 mv inspircd.conf.rpi2-home-epanel1 inspircd.conf
 wget http://home-resources.mti-team2.dyndns.org/static/inspircd.motd
 wget http://home-resources.mti-team2.dyndns.org/static/inspircd.rules
+
 # modifs configs :
 changement pid : /var/run/inspircd/inspircd.pid
 chamgenemt log : /var/log/inspircd/inspircd.log
+
+# run daemon "by hand"
+su - -s /bin/sh inspircd
+/usr/bin/inspircd --config=/etc/inspircd/inspircd.conf
+ps
+cat /var/log/inspircd/startup.log
+# stop it
+kill -SIGTERM $(cat /var/run/inspircd/inspircd.pid)
 ```
 
 ## References:
