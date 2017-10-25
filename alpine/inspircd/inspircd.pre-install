@@ -1,0 +1,4 @@
+#!/bin/sh
+
+getent group inspircd &>/dev/null || addgroup -S -g 141 inspircd >/dev/null
+getent passwd inspircd &>/dev/null || adduser -S -u 141 -G inspircd -h /var/lib/inspircd -s /bin/false -g inspircd inspircd >/dev/null

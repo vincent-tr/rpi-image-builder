@@ -1,0 +1,4 @@
+#!/bin/sh
+
+getent passwd inspircd &>/dev/null && deluser inspircd >/dev/null
+getent group inspircd &>/dev/null && delgroup inspircd >/dev/null
