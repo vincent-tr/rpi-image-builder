@@ -37,4 +37,4 @@ sudo apk add --allow-untrusted ~/packages/builder/x86_64/inspircd-2.0.24-r0.apk
  * https://wiki.alpinelinux.org/wiki/APKBUILD_examples:Simple
  * https://github.com/inspircd/inspircd-docker/blob/master/Dockerfile
  * https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=inspircd
- * https://github.com/kylef-archive/ark/tree/master/inspircd
+ * https://github.com/kylef-archive/ark/tree/master/
