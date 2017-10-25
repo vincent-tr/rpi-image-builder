@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+name=inspircd
+command="/usr/bin/$name"
+command_args="--config=$INSPIRCD_CONFIG_FILE $INSPIRCD_OPTS"
+command_background="yes"
+
+start_stop_daemon_args="--user inspircd:inspircd"
+pidfile="$INSPIRCD_PID_FILE"
+
+depend() {
+  need net
+  after firewall
+}

@@ -1,0 +1,4 @@
+
+INSPIRCD_CONFIG_FILE="/etc/inspircd/inspircd.conf"
+INSPIRCD_PID_FILE="/var/run/inspircd/inspircd.pid"
+INSPIRCD_OPTS=""

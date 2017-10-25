@@ -10,7 +10,11 @@ license="GPL3"
 depends="libgcc libstdc++"
 makedepends="pkgconfig perl perl-net-ssleay perl-crypt-ssleay perl-lwp-protocol-https perl-libwww" # gcc g++ make
 install="inspircd.pre-install inspircd.post-deinstall"
-source="${pkgname}-${pkgver}.tar.gz::https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz inspircd.init"
+source="
+  ${pkgname}-${pkgver}.tar.gz::https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz
+  inspircd.confd
+  inspircd.initd
+"
 builddir="$srcdir/inspircd-$pkgver"
 
 prepare() {
@@ -35,7 +39,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir"/inspircd.init "$pkgdir"/etc/init.d/inspircd
   install -o141 -g141 -dm750 "$pkgdir/var/log/inspircd" "$pkgdir/var/run/inspircd" "$pkgdir/var/lib/inspircd"
 
   cd "$srcdir/inspircd-$pkgver"
@@ -44,4 +47,7 @@ package() {
   rm -rf "$pkgdir"/usr/lib/inspircd/inspircd
   rm -rf "$pkgdir"/usr/lib/inspircd/logs
   rm -rf "$pkgdir"/usr/lib/inspircd/data
+
+  install -m755 -D "$srcdir"/$pkgname.initd "$pkgdir"/etc/init.d/$pkgname
+  install -m644 -D "$srcdir"/$pkgname.confd "$pkgdir"/etc/conf.d/$pkgname
 }
