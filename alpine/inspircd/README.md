@@ -18,9 +18,8 @@ su - builder
 ```
 su - builder
 sudo apk add --no-cache --virtual .inspircd-build pkgconfig perl perl-net-ssleay perl-crypt-ssleay perl-lwp-protocol-https perl-libwww
-mkdir inspircd
-cd inspircd
-wget APKBUILD inspircd.* # TODO
+git clone https://github.com/vincent-tr/rpi-image-builder
+cd rpi-image-builder/alpine/inspircd
 abuild checksum
 abuild -r
 
