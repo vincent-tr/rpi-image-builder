@@ -23,6 +23,7 @@ sudo chown builder:builder .abuild/*
 
 ```
 su - builder
+rm -f ~/packages/alpine/armhf/APKINDEX.tar.gz
 sudo apk add --no-cache --virtual .inspircd-build pkgconfig perl perl-net-ssleay perl-crypt-ssleay perl-lwp-protocol-https perl-libwww
 git clone https://github.com/vincent-tr/rpi-image-builder
 cd rpi-image-builder/alpine/inspircd
