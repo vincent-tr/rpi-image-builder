@@ -33,7 +33,7 @@ abuild -r
 sudo apk del .inspircd-build
 
 # install package
-sudo apk add --allow-untrusted ~/packages/builder/x86_64/inspircd-2.0.24-r0.apk
+sudo apk add --allow-untrusted ~/packages/alpine/armhf/inspircd-2.0.24-r0.apk
 
 # dl configs
 cd /etc/inspircd
