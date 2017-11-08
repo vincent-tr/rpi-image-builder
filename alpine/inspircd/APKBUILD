@@ -44,6 +44,9 @@ package() {
   cd "$srcdir/inspircd-$pkgver"
   make DESTDIR="$pkgdir" install
 
+  # seems that make install change its owner to current user
+  install -o141 -g141 -dm750 "$pkgdir/var/log/inspircd"
+
   rm -rf "$pkgdir"/usr/lib/inspircd/inspircd
   rm -rf "$pkgdir"/usr/lib/inspircd/logs
   rm -rf "$pkgdir"/usr/lib/inspircd/data
