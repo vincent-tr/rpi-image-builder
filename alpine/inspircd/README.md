@@ -44,7 +44,7 @@ wget http://home-resources.mti-team2.dyndns.org/static/inspircd.rules
 
 # modifs configs :
 changement pid : /var/run/inspircd/inspircd.pid
-chamgenemt log : /var/log/inspircd/inspircd.log
+changenemt log : /var/log/inspircd/inspircd.log
 
 # run daemon "by hand"
 su - -s /bin/sh inspircd
