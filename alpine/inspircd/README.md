@@ -4,7 +4,7 @@
 
 ```
 apk add --no-cache --virtual .build-utils alpine-sdk
-adduser builder
+adduser -D builder
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 addgroup builder abuild
 mkdir -p /var/cache/distfiles
