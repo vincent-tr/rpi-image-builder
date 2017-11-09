@@ -40,6 +40,11 @@ sudo apk add --allow-untrusted ~/packages/alpine/armhf/inspircd-2.0.24-r0.apk
 # on builder@arch-desktop
 scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
 
+# install from arch-desktop
+su -
+scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/armhf/inspircd-2.0.24-r0.apk .
+apk add --allow-untrusted inspircd-2.0.24-r0.apk
+
 # dl configs
 cd /etc/inspircd
 wget http://home-resources.mti-team2.dyndns.org/static/inspircd.conf.rpi2-home-epanel1
