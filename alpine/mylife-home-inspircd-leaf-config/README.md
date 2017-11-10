@@ -8,7 +8,7 @@ cf ../README.md
 
 ```
 su - builder
-rm -f ~/packages/alpine/any/APKINDEX.tar.gz
+rm -f ~/packages/alpine/noarch/APKINDEX.tar.gz
 
 git clone https://github.com/vincent-tr/rpi-image-builder
 cd rpi-image-builder/alpine/mylife-home-inspircd-leaf-config
@@ -17,7 +17,7 @@ abuild -r
 
 # move package on arch-desktop
 # on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/any/mylife-home-inspircd-leaf-config-1.0.0-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/any
+scp root@<target>:/home/builder/packages/alpine/noarch/mylife-home-inspircd-leaf-config-1.0.0-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/noarch
 ```
 
 ## Test package
@@ -26,12 +26,12 @@ scp root@<target>:/home/builder/packages/alpine/any/mylife-home-inspircd-leaf-co
 # install inspircd, cf ../inspircd/README.md
 
 # install package
-sudo apk add --allow-untrusted ~/packages/alpine/any/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
+sudo apk add --allow-untrusted ~/packages/alpine/noarch/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
 
 # install from arch-desktop
 su -
-scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/any/mylife-home-inspircd-leaf-config-1.0.0-r0.apk .
-apk add --allow-untrusted any/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
+scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/noarch/mylife-home-inspircd-leaf-config-1.0.0-r0.apk .
+apk add --allow-untrusted noarch/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
 
 # run daemon "by hand"
 su - -s /bin/sh inspircd
