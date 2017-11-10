@@ -52,6 +52,9 @@ ps
 cat /var/log/inspircd/startup.log
 # stop it
 kill -SIGTERM $(cat /var/run/inspircd/inspircd.pid)
+
+# run daemon "normaly"
+rc-service start inspircd
 ```
 
 ## References:
