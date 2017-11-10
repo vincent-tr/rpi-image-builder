@@ -7,6 +7,7 @@ pkgdesc="A stable, modern and lightweight IRC daemon"
 arch="noarch"
 url="http://http://apps.mti-team2.dyndns.org//"
 license="GPL3"
+depends="inspircd"
 source="
   inspircd.conf
   inspircd.motd
