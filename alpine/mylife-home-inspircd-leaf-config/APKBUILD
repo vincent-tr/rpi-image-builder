@@ -23,10 +23,10 @@ build() {
 }
 
 package() {
-  install -dm750 "$pkgdir/etc/inspircd"
+  install -dm755 "$pkgdir/etc/inspircd"
 
-  install "$srcdir/inspircd.conf" "$pkgdir/etc/inspircd/inspircd.conf"
-  install "$srcdir/inspircd.motd" "$pkgdir/etc/inspircd/inspircd.motd"
-  install "$srcdir/inspircd.rules" "$pkgdir/etc/inspircd/inspircd.rules"
+  install -m644 "$srcdir/inspircd.conf" "$pkgdir/etc/inspircd/inspircd.conf"
+  install -m644 "$srcdir/inspircd.motd" "$pkgdir/etc/inspircd/inspircd.motd"
+  install -m644 "$srcdir/inspircd.rules" "$pkgdir/etc/inspircd/inspircd.rules"
 }
 
