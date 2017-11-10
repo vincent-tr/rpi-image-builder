@@ -18,9 +18,11 @@ abuild -r
 # move package on arch-desktop
 # on builder@arch-desktop
 scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
+```
 
 ## Test package
 
+```
 # remove build tools
 sudo apk del .inspircd-build
 
@@ -50,8 +52,6 @@ ps
 cat /var/log/inspircd/startup.log
 # stop it
 kill -SIGTERM $(cat /var/run/inspircd/inspircd.pid)
-
-# TODO: tester scripts init.d (pas possible dans docker)
 ```
 
 ## References:
