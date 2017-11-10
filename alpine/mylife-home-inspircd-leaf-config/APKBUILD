@@ -1,0 +1,27 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=inspircd
+pkgver=2.0.24
+pkgrel=0
+pkgdesc="A stable, modern and lightweight IRC daemon"
+arch="any"
+url="http://http://apps.mti-team2.dyndns.org//"
+license="GPL3"
+source="
+  inspircd.conf
+  inspircd.motd
+  inspircd.rules
+"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+
+}
+
+package() {
+  install -o141 -g141 inspircd.conf "$pkgdir/etc/inspircd/inspircd.conf"
+}
+
