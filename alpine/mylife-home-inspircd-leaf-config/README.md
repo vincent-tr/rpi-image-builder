@@ -11,7 +11,7 @@ su - builder
 rm -f ~/packages/alpine/any/APKINDEX.tar.gz
 
 git clone https://github.com/vincent-tr/rpi-image-builder
-cd rpi-image-builder/alpine/mylife-home-inspircd-config
+cd rpi-image-builder/alpine/mylife-home-inspircd-leaf-config
 abuild checksum
 abuild -r
 

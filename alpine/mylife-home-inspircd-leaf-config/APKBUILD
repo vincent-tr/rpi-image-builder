@@ -1,7 +1,7 @@
 # Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
 
-pkgname=inspircd
-pkgver=2.0.24
+pkgname=mylife-home-inspircd-leaf-config
+pkgver=1.0.0
 pkgrel=0
 pkgdesc="A stable, modern and lightweight IRC daemon"
 arch="any"
@@ -18,7 +18,7 @@ prepare() {
 }
 
 build() {
-
+  # nothing
 }
 
 package() {
