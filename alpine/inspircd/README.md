@@ -30,15 +30,17 @@ cd rpi-image-builder/alpine/inspircd
 abuild checksum
 abuild -r
 
+# move package on arch-desktop
+# on builder@arch-desktop
+scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
+
+## Test package
+
 # remove build tools
 sudo apk del .inspircd-build
 
 # install package
 sudo apk add --allow-untrusted ~/packages/alpine/armhf/inspircd-2.0.24-r0.apk
-
-# move package on arch-desktop
-# on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
 
 # install from arch-desktop
 su -
