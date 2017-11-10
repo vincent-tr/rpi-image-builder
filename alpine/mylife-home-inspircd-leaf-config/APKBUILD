@@ -18,10 +18,12 @@ prepare() {
 }
 
 build() {
-  # nothing
+  :
 }
 
 package() {
-  install -o141 -g141 inspircd.conf "$pkgdir/etc/inspircd/inspircd.conf"
+  install -o141 -g141 "$srcdir/inspircd.conf" "$pkgdir/etc/inspircd/inspircd.conf"
+  install -o141 -g141 "$srcdir/inspircd.motd" "$pkgdir/etc/inspircd/inspircd.motd"
+  install -o141 -g141 "$srcdir/inspircd.rules" "$pkgdir/etc/inspircd/inspircd.rules"
 }
 
