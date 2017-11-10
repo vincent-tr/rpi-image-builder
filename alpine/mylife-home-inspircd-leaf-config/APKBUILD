@@ -9,6 +9,7 @@ url="http://http://apps.mti-team2.dyndns.org//"
 license="GPL3"
 depends="inspircd"
 source="
+  defines.sh
   inspircd.conf
   inspircd.motd
   inspircd.rules
@@ -25,6 +26,7 @@ build() {
 package() {
   install -dm755 "$pkgdir/etc/inspircd"
 
+  install -m755 "$srcdir/defines.sh" "$pkgdir/etc/inspircd/defines.sh"
   install -m644 "$srcdir/inspircd.conf" "$pkgdir/etc/inspircd/inspircd.conf"
   install -m644 "$srcdir/inspircd.motd" "$pkgdir/etc/inspircd/inspircd.motd"
   install -m644 "$srcdir/inspircd.rules" "$pkgdir/etc/inspircd/inspircd.rules"
