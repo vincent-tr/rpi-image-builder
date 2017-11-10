@@ -10,8 +10,6 @@ cf ../README.md
 su - builder
 rm -f ~/packages/alpine/any/APKINDEX.tar.gz
 
-# install inspircd, cf ../inspircd/README.md
-
 git clone https://github.com/vincent-tr/rpi-image-builder
 cd rpi-image-builder/alpine/mylife-home-inspircd-config
 abuild checksum
@@ -23,6 +21,9 @@ scp root@<target>:/home/builder/packages/alpine/any/mylife-home-inspircd-leaf-co
 ```
 
 ## Test package
+
+```
+# install inspircd, cf ../inspircd/README.md
 
 # install package
 sudo apk add --allow-untrusted ~/packages/alpine/any/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
