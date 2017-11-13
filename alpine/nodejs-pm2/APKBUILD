@@ -1,0 +1,34 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=nodejs-pm2
+pkgver=2.7.2
+pkgrel=0
+pkgdesc="nodejs PM2"
+arch="noarch"
+url="http://http://apps.mti-team2.dyndns.org//"
+license="GPL3"
+depends="nodejs"
+source=""
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  cd "$srcdir" && npm install --global-style pm2@2.7.2
+}
+
+package() {
+  install -dm755 "$pkgdir/etc/inspircd"
+
+  install -m755 "$srcdir/defines.sh" "$pkgdir/etc/inspircd/defines.sh"
+  install -m644 "$srcdir/inspircd.conf" "$pkgdir/etc/inspircd/inspircd.conf"
+  install -m644 "$srcdir/inspircd.motd" "$pkgdir/etc/inspircd/inspircd.motd"
+  install -m644 "$srcdir/inspircd.rules" "$pkgdir/etc/inspircd/inspircd.rules"
+}
+
+/usr/bin/pm2 -> /usr/lib/node_modules/pm2/bin/pm2
+/usr/bin/pm2-dev -> /usr/lib/node_modules/pm2/bin/pm2-dev
+/usr/bin/pm2-docker -> /usr/lib/node_modules/pm2/bin/pm2-docker
+/usr/bin/pm2-runtime -> /usr/lib/node_modules/pm2/bin/pm2-runtime
+/usr/lib/node_modules/pm2
