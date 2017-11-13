@@ -21,7 +21,7 @@ build() {
 package() {
   install -dm755 "$pkgdir/usr/lib/node_modules"
 
-  install "$srcdir/node_modules/pm2" "$pkgdir/usr/lib/node_modules"
+  cp -pr "$srcdir/node_modules/pm2" "$pkgdir/usr/lib/node_modules"
 
   ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2" "$pkgdir/usr/bin/pm2"
   ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-dev" "$pkgdir/usr/bin/pm2-dev"
