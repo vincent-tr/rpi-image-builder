@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  install -m755 -D "$srcdir"/$pkgname.initd "$pkgdir"/etc/init.d/$pkgname
+  install -m755 -D "$srcdir"/pm2.initd "$pkgdir"/etc/init.d/pm2
 
   install -o141 -g141 -dm755 "$pkgdir/home/mylife-home/.pm2"
   install -o141 -g141 -m644 "$srcdir/dump.pm2" "$pkgdir/home/mylife-home/.pm2/dump.pm2"
