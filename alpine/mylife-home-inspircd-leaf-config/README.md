@@ -30,7 +30,7 @@ sudo apk add --allow-untrusted ~/packages/alpine/armhf/mylife-home-inspircd-leaf
 # install from arch-desktop
 su -
 scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/noarch/mylife-home-inspircd-leaf-config-1.0.0-r0.apk .
-apk add --allow-untrusted noarch/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
+apk add --allow-untrusted mylife-home-inspircd-leaf-config-1.0.0-r0.apk
 
 # run daemon "by hand"
 su - -s /bin/sh inspircd
