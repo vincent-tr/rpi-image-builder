@@ -1,0 +1,4 @@
+#!/bin/sh
+
+getent passwd mylife-home &>/dev/null && deluser mylife-home >/dev/null
+getent group mylife-home &>/dev/null && delgroup mylife-home >/dev/null

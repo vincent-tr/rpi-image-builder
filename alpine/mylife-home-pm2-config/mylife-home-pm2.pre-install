@@ -1,0 +1,4 @@
+#!/bin/sh
+
+getent group mylife-home &>/dev/null || addgroup -S -g 142 mylife-home >/dev/null
+getent passwd mylife-home &>/dev/null || adduser -S -u 142 -G mylife-home -g mylife-home mylife-home >/dev/null

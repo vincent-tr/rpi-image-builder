@@ -1,0 +1,31 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-pm2-config
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="mylife-home : pm2 config with mylife-home-core"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="nodejs-pm2"
+install="mylife-home-pm2.pre-install mylife-home-pm2.post-deinstall"
+source="
+  pm2.initd
+  dump.pm2
+"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  :
+}
+
+package() {
+  install -m755 -D "$srcdir"/$pkgname.initd "$pkgdir"/etc/init.d/$pkgname
+
+  install -o141 -g141 -dm755 "$pkgdir/home/mylife-home/.pm2"
+  install -o141 -g141 -m644 "$srcdir/dump.pm2" "$pkgdir/home/mylife-home/.pm2/dump.pm2"
+}
+
