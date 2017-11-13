@@ -9,7 +9,6 @@ cf ../README.md
 ```
 su - builder
 rm -f ~/packages/alpine/armhf/APKINDEX.tar.gz
-sudo apk add --no-cache --virtual .nodejs-pm2-build nodejs-npm
 git clone https://github.com/vincent-tr/rpi-image-builder
 cd rpi-image-builder/alpine/nodejs-pm2
 # abuild checksum # no source -> no need for checksum
@@ -23,9 +22,6 @@ scp root@<target>:/home/builder/packages/alpine/armhf/nodejs-pm2-2.7.2-r0.apk /h
 ## Test package
 
 ```
-# remove build tools
-sudo apk del .nodejs-pm2-build
-
 # install package
 sudo apk add --allow-untrusted ~/packages/alpine/armhf/nodejs-pm2-2.7.2-r0.apk
 

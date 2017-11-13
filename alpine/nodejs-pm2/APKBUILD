@@ -8,6 +8,7 @@ arch="noarch"
 url="http://http://apps.mti-team2.dyndns.org//"
 license="GPL3"
 depends="nodejs"
+makedepends="nodejs-npm"
 source=""
 
 prepare() {
