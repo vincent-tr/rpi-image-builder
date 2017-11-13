@@ -12,7 +12,7 @@ rm -f ~/packages/alpine/armhf/APKINDEX.tar.gz
 sudo apk add --no-cache --virtual .nodejs-pm2-build nodejs-npm
 git clone https://github.com/vincent-tr/rpi-image-builder
 cd rpi-image-builder/alpine/nodejs-pm2
-abuild checksum
+# abuild checksum # no source -> no need for checksum
 abuild -r
 
 # move package on arch-desktop
