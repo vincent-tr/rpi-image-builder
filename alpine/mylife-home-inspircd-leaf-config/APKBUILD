@@ -3,7 +3,7 @@
 pkgname=mylife-home-inspircd-leaf-config
 pkgver=1.0.0
 pkgrel=0
-pkgdesc="A stable, modern and lightweight IRC daemon"
+pkgdesc="mylife-home : inspircd configuration for leaf nodes"
 arch="noarch"
 url="http://http://apps.mti-team2.dyndns.org//"
 license="GPL3"
