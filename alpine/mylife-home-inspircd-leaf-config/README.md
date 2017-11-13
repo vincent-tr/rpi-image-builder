@@ -9,7 +9,6 @@ cf ../README.md
 ```
 su - builder
 rm -f ~/packages/alpine/noarch/APKINDEX.tar.gz
-
 git clone https://github.com/vincent-tr/rpi-image-builder
 cd rpi-image-builder/alpine/mylife-home-inspircd-leaf-config
 abuild checksum
