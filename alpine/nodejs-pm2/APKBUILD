@@ -19,16 +19,12 @@ build() {
 }
 
 package() {
-  install -dm755 "$pkgdir/etc/inspircd"
+  install -dm755 "$pkgdir/usr/lib/node_modules"
 
-  install -m755 "$srcdir/defines.sh" "$pkgdir/etc/inspircd/defines.sh"
-  install -m644 "$srcdir/inspircd.conf" "$pkgdir/etc/inspircd/inspircd.conf"
-  install -m644 "$srcdir/inspircd.motd" "$pkgdir/etc/inspircd/inspircd.motd"
-  install -m644 "$srcdir/inspircd.rules" "$pkgdir/etc/inspircd/inspircd.rules"
+  cp -dr --no-preserve=ownership "$srcdir/node_modules/pm2" "$pkgdir/usr/lib/node_modules"
+
+  ln -sr /usr/lib/node_modules/pm2/bin/pm2 /usr/bin/pm2
+  ln -sr /usr/lib/node_modules/pm2/bin/pm2-dev /usr/bin/pm2-dev
+  ln -sr /usr/lib/node_modules/pm2/bin/pm2-docker /usr/bin/pm2-docker
+  ln -sr /usr/lib/node_modules/pm2/bin/pm2-runtime /usr/bin/pm2-runtime
 }
-
-/usr/bin/pm2 -> /usr/lib/node_modules/pm2/bin/pm2
-/usr/bin/pm2-dev -> /usr/lib/node_modules/pm2/bin/pm2-dev
-/usr/bin/pm2-docker -> /usr/lib/node_modules/pm2/bin/pm2-docker
-/usr/bin/pm2-runtime -> /usr/lib/node_modules/pm2/bin/pm2-runtime
-/usr/lib/node_modules/pm2
