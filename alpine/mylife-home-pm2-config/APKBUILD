@@ -8,7 +8,7 @@ arch="noarch"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
 depends="nodejs-pm2"
-install="mylife-home-pm2.pre-install mylife-home-pm2.post-deinstall"
+install="mylife-home-pm2-config.pre-install mylife-home-pm2-config.post-deinstall"
 source="
   pm2.initd
   dump.pm2
