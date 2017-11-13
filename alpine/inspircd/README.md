@@ -22,8 +22,6 @@ scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /ho
 ## Test package
 
 ```
-# remove build tools
-
 # install package
 sudo apk add --allow-untrusted ~/packages/alpine/armhf/inspircd-2.0.24-r0.apk
 
