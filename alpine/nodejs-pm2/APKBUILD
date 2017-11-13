@@ -23,8 +23,8 @@ package() {
 
   cp -dr --no-preserve=ownership "$srcdir/node_modules/pm2" "$pkgdir/usr/lib/node_modules"
 
-  ln -sr /usr/lib/node_modules/pm2/bin/pm2 /usr/bin/pm2
-  ln -sr /usr/lib/node_modules/pm2/bin/pm2-dev /usr/bin/pm2-dev
-  ln -sr /usr/lib/node_modules/pm2/bin/pm2-docker /usr/bin/pm2-docker
-  ln -sr /usr/lib/node_modules/pm2/bin/pm2-runtime /usr/bin/pm2-runtime
+  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2" "$pkgdir/usr/bin/pm2"
+  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-dev" "$pkgdir/usr/bin/pm2-dev"
+  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-docker" "$pkgdir/usr/bin/pm2-docker"
+  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-runtime" "$pkgdir/usr/bin/pm2-runtime"
 }
