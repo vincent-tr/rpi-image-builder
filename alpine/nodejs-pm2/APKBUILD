@@ -15,13 +15,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir" && npm install --global-style pm2@2.7.2
+  cd "$srcdir" && npm install --global-style "pm2@$pkgver"
 }
 
 package() {
   install -dm755 "$pkgdir/usr/lib/node_modules"
 
-  cp -dr --no-preserve=ownership "$srcdir/node_modules/pm2" "$pkgdir/usr/lib/node_modules"
+  install "$srcdir/node_modules/pm2" "$pkgdir/usr/lib/node_modules"
 
   ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2" "$pkgdir/usr/bin/pm2"
   ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-dev" "$pkgdir/usr/bin/pm2-dev"
