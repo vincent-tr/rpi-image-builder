@@ -20,11 +20,12 @@ build() {
 
 package() {
   install -dm755 "$pkgdir/usr/lib/node_modules"
+  install -dm755 "$pkgdir/usr/bin"
 
   cp -pr "$srcdir/node_modules/pm2" "$pkgdir/usr/lib/node_modules"
 
-  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2" "$pkgdir/usr/bin/pm2"
-  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-dev" "$pkgdir/usr/bin/pm2-dev"
-  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-docker" "$pkgdir/usr/bin/pm2-docker"
-  ln -sr "$pkgdir/usr/lib/node_modules/pm2/bin/pm2-runtime" "$pkgdir/usr/bin/pm2-runtime"
+  ln -s ../lib/node_modules/pm2/bin/pm2 "$pkgdir/usr/bin/pm2"
+  ln -s ../lib/node_modules/pm2/bin/pm2-dev "$pkgdir/usr/bin/pm2-dev"
+  ln -s ../lib/node_modules/pm2/bin/pm2-docker "$pkgdir/usr/bin/pm2-docker"
+  ln -s ../lib/node_modules/pm2/bin/pm2-runtime "$pkgdir/usr/bin/pm2-runtime"
 }
