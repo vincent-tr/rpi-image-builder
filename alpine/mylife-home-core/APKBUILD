@@ -26,6 +26,4 @@ package() {
 
   cp -pr "$srcdir/mylife-home-core" "$pkgdir/home/mylife-home"
   chown -R 142:142 "$pkgdir/home/mylife-home/mylife-home-core"
-
-  # TODO: data/components.json ?
 }

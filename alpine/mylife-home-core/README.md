@@ -33,4 +33,7 @@ apk add --allow-untrusted mylife-home-core-1.0.4-r0.apk
 # run
 su - mylife-home
 pm2 start --name mylife-home-core mylife-home-core/bin/server.js
+
+# TODO: data/components.json ?
+# TODO: dump.pm2 with mylife-home-core inside ?
 ```
