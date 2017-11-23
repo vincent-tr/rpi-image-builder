@@ -31,7 +31,7 @@ scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/ar
 apk add --allow-untrusted mylife-home-core-1.0.4-r0.apk
 
 # run
-su - mylife-home
+su - -s /bin/sh mylife-home
 pm2 start --name mylife-home-core mylife-home-core/bin/server.js
 
 # TODO: data/components.json ?
