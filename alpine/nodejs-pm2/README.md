@@ -29,6 +29,4 @@ sudo apk add --allow-untrusted ~/packages/alpine/armhf/nodejs-pm2-2.7.2-r0.apk
 su -
 scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/armhf/nodejs-pm2-2.7.2-r0.apk .
 apk add --allow-untrusted nodejs-pm2-2.7.2-r0.apk
-
-# TODO
 ```
