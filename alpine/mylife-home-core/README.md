@@ -30,5 +30,7 @@ su -
 scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/armhf/mylife-home-core-1.0.4-r0.apk .
 apk add --allow-untrusted mylife-home-core-1.0.4-r0.apk
 
-# TODO
+# run
+su - mylife-home
+pm2 start --name mylife-home-core mylife-home-core/bin/server.js
 ```
