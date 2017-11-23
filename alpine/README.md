@@ -10,11 +10,7 @@ chmod a+w /var/cache/distfiles
 su - builder
 # restore ~/.abuild
 mkdir .abuild
-# on builder@arch-desktop
-cd ~/raspberrypi/image-builder/abuild
-scp * root@<target>:/home/builder/.abuild
-# on builder@<target>
-sudo chown builder:builder .abuild/*
+scp root@arch-desktop:/home/builder/raspberrypi/image-builder/abuild/* .abuild
 ```
 
 # Install node LTS
