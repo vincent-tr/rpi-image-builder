@@ -1,1 +1,31 @@
-APKBUILD
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-core
+pkgver=1.0.4
+pkgrel=0
+pkgdesc="MyLife Home Core"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="nodejs mylife-home-pm2-config"
+makedepends="nodejs-npm git"
+source=""
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  cd "$srcdir" && npm install --global-style --production --no-optional --no-save --no-package-lock "github:mylife-home/$pkgname#$pkgver"
+  mv "$srcdir/node_modules/mylife-home-core" "$srcdir/mylife-home-core"
+  rm -rf "$srcdir/node_modules"
+}
+
+package() {
+  install -o142 -g142 -dm755 "$pkgdir/home/mylife-home"
+
+  cp -pr "$srcdir/mylife-home-core" "$pkgdir/home/mylife-home"
+  chown -R 142:142 "$pkgdir/home/mylife-home/mylife-home-core"
+
+  # TODO: data/components.json ?
+}
