@@ -16,7 +16,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir" && npm install --global-style --production --no-optional --no-save --no-package-lock "github:mylife-home/$pkgname#$pkgver"
+  cd "$srcdir" && npm install --global-style --production --no-optional --no-save --no-package-lock "github:mylife-home/$pkgname#v$pkgver"
   mv "$srcdir/node_modules/mylife-home-core" "$srcdir/mylife-home-core"
   rm -rf "$srcdir/node_modules"
 }
