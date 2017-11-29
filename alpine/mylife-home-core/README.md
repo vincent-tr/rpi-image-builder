@@ -38,4 +38,10 @@ pm2 save
 # TODO: data/components.json ?
 # TODO: dump.pm2 with mylife-home-core inside ?
 # => merge dump.pm2.part with dump.pm2, then "su -l mylife-home -c 'pm2 resurrect'" to reload it
+
+
+# cleanup persistent data
+mount -o remount,rw /media/mmcblk0p1
+rm -rf /media/mmcblk0p1/mylife-home
+mount -o remount,ro /media/mmcblk0p1
 ```
