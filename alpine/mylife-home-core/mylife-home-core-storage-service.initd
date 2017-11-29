@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+name=mylife-home-core-storage-service
+command="/usr/bin/$name"
+command_args=""
+pidfile="/var/run/$name.pid"
+command_backgroup="yes"
+
+start_stop_daemon_args=""
+
+depend() {
+  need localmount
+  before pm2
+}

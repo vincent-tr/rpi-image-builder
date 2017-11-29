@@ -9,7 +9,7 @@ url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
 depends="nodejs mylife-home-pm2-config"
 makedepends="nodejs-npm git"
-source=""
+source="mylife-home-core-storage-service.initd mylife-home-core-storage-service.sh"
 install="mylife-home-core.post-install mylife-home-core.pre-deinstall"
 
 prepare() {
@@ -24,6 +24,9 @@ build() {
 
 package() {
   install -o142 -g142 -dm755 "$pkgdir/home/mylife-home"
+
+  install -m755 -D "$srcdir"/mylife-home-core-storage-service.initd "$pkgdir"/etc/init.d/mylife-home-core-storage-service
+  install -m755 -D "$srcdir"/mylife-home-core-storage-service.sh "$pkgdir"/usr/bin/mylife-home-core-storage-service
 
   cp -pr "$srcdir/mylife-home-core" "$pkgdir/home/mylife-home"
   chown -R 142:142 "$pkgdir/home/mylife-home/mylife-home-core"
