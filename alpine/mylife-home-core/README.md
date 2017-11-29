@@ -31,14 +31,10 @@ scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/ar
 apk add --allow-untrusted mylife-home-core-1.0.4-r0.apk
 
 # run
+rc-update add mylife-home-core-storage-service
+rc-service mylife-home-core-storage-service start
 su - -s /bin/sh mylife-home
-pm2 start --name mylife-home-core mylife-home-core/bin/server.js
-pm2 save
-
-# TODO: data/components.json ?
-# TODO: dump.pm2 with mylife-home-core inside ?
-# => merge dump.pm2.part with dump.pm2, then "su -l mylife-home -c 'pm2 resurrect'" to reload it
-
+pm2 ressurect
 
 # cleanup persistent data
 mount -o remount,rw /media/mmcblk0p1
