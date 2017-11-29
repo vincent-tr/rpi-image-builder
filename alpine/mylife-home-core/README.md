@@ -47,6 +47,8 @@ scp root@<target>:/home/builder/packages/alpine/armhf/mylife-home-core-1.0.4-r0.
 ## Test package
 
 ```
+# see required packages
+
 # install package
 sudo apk add --allow-untrusted ~/packages/alpine/armhf/mylife-home-core-1.0.4-r0.apk
 
