@@ -36,7 +36,7 @@ su - builder
 rm -f ~/packages/alpine/armhf/APKINDEX.tar.gz
 git clone https://github.com/vincent-tr/rpi-image-builder
 cd rpi-image-builder/alpine/mylife-home-core
-# abuild checksum # no source -> no need for checksum
+abuild checksum
 abuild -r
 
 # move package on arch-desktop
