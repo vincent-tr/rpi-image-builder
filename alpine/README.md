@@ -17,9 +17,9 @@ scp root@arch-desktop:/home/builder/raspberrypi/image-builder/abuild/* .abuild
 
 ```
 wget http://dl-3.alpinelinux.org/alpine/edge/main/armhf/nodejs-npm-8.9.1-r0.apk
-wget http://dl-3.alpinelinux.org/alpine/edge/main/armhf/libuv-1.15.0-r0.apk
+wget http://dl-3.alpinelinux.org/alpine/edge/main/armhf/libuv-1.17.0-r0.apk
 wget http://dl-3.alpinelinux.org/alpine/edge/main/armhf/nodejs-8.9.1-r0.apk
-apk add --allow-untrusted ./libuv-1.15.0-r0.apk
+apk add --allow-untrusted ./libuv-1.17.0-r0.apk
 apk add --allow-untrusted ./nodejs-npm-8.9.1-r0.apk
 apk add --allow-untrusted ./nodejs-8.9.1-r0.apk
 apk del nodejs-npm
