@@ -60,8 +60,7 @@ apk add --allow-untrusted mylife-home-core-1.0.4-r0.apk
 # run
 rc-update add mylife-home-core-storage-service
 rc-service mylife-home-core-storage-service start
-su - -s /bin/sh mylife-home
-pm2 resurrect
+su - -s /bin/sh mylife-home -c "pm2 resurrect"
 
 # cleanup persistent data
 mount -o remount,rw /media/mmcblk0p1
