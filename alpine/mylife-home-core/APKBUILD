@@ -10,6 +10,7 @@ license="GPL3"
 depends="nodejs mylife-home-pm2-config"
 makedepends="nodejs-npm git"
 source=""
+install="mylife-home-core.post-install mylife-home-core.pre-deinstall"
 
 prepare() {
   default_prepare
