@@ -17,7 +17,7 @@ prepare() {
 
 build() {
   cd "$srcdir" && npm install --global-style --production --no-optional --no-save --no-package-lock "github:mylife-home/mylife-home-core#v$core_version"
-  cd "$srcdir/node_modules/mylife-home-core" && make mod-install MODULE={{plugin-name}} COMMIT={{plugin-version}}
+  cd "$srcdir/node_modules/mylife-home-core" && make mod-install MODULE={{plugin-name}} COMMIT=v{{plugin-version}}
   mv "$srcdir/node_modules/mylife-home-core/plugins/{{plugin-name}}" "$srcdir"
   rm -rf "$srcdir/node_modules"
 }
