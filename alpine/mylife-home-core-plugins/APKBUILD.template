@@ -3,7 +3,7 @@
 pkgname=mylife-home-core-plugins-{{plugin-name}}
 pkgver={{plugin-version}}
 pkgrel=0
-pkgdesc="{{plugin-description}}"
+pkgdesc="MyLife Home Core Plugin : {{plugin-name}}"
 arch="{{plugin-arch}}"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
