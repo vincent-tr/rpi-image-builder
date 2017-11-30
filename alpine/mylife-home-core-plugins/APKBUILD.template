@@ -8,7 +8,7 @@ arch="noarch"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
 depends="mylife-home-core {{plugin-dependencies}}"
-makedepends="nodejs-npm git"
+makedepends="nodejs-npm git python"
 core_version="$(apk info -vv | grep '^mylife-home-core-\d' | grep -o '\(\d\+\.\d\+\.\d\+\)')"
 
 prepare() {
