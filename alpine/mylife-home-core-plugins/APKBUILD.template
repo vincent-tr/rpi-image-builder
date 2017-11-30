@@ -1,0 +1,30 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-core-plugins-{{plugin-name}}
+pkgver={{plugin-version}}
+pkgrel=0
+pkgdesc="{{plugin-description}}"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="mylife-home-core {{plugin-dependencies}}"
+makedepends="nodejs-npm git"
+core_version="$(apk info -vv | grep '^mylife-home-core-\d' | grep -o '\(\d\+\.\d\+\.\d\+\)')"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  cd "$srcdir" && npm install --global-style --production --no-optional --no-save --no-package-lock "github:mylife-home/mylife-home-core#v$core_version"
+  cd "$srcdir/node_modules/mylife-home-core" && make mod-install MODULE={{plugin-name}} COMMIT={{plugin-version}}
+  mv "$srcdir/node_modules/mylife-home-core/plugins/{{plugin-name}}" "$srcdir"
+  rm -rf "$srcdir/node_modules"
+}
+
+package() {
+  install -o142 -g142 -dm755 "$pkgdir/home/mylife-home/mylife-home-core/plugins"
+
+  cp -pr "$srcdir/{{plugin-name}}" "$pkgdir/home/mylife-home/mylife-home-core/plugins"
+  chown -R 142:142 "$pkgdir/home/mylife-home/mylife-home-core/plugins/{{plugin-name}}"
+}
