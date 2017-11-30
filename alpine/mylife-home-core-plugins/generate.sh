@@ -9,6 +9,6 @@ do
     continue;
   fi
   echo "GENERATING PLUGIN : $plugin_name"
-  ./build "$plugin_name" "$plugin_version" "$plugin_dependencies"
+  ./build.sh "$plugin_name" "$plugin_version" "$plugin_dependencies"
   echo "PLUGIN GENERATED : $plugin_name"
 done < plugin-list
