@@ -19,7 +19,7 @@ cd $build_dir
 cp ../APKBUILD.template ./APKBUILD
 sed -i "s/{{plugin-name}}/$plugin_name/g" APKBUILD
 sed -i "s/{{plugin-version}}/$plugin_version/g" APKBUILD
-sed -i "s/{{plugin-platform}}/$plugin_arch/g" APKBUILD
+sed -i "s/{{plugin-arch}}/$plugin_arch/g" APKBUILD
 sed -i "s/{{plugin-dependencies}}/$plugin_dependencies/g" APKBUILD
 
 echo "building $plugin_name-$plugin_version (arch=$plugin_arch, dependencies=$plugin_dependencies)"
