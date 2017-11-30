@@ -6,7 +6,8 @@ plugin_noarch=$3
 plugin_dependencies=$4
 build_dir="$plugin_name-$plugin_version"
 
-if [ "$plugin_noarch" == "yes" ] then
+if [ "$plugin_noarch" == "yes" ]
+then
   plugin_arch="noarch"
 else
   plugin_arch="$(apk --print-arch)"
