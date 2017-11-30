@@ -41,7 +41,7 @@ abuild -r
 
 # move package on arch-desktop
 # on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/armhf/mylife-home-core-1.0.4-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/noarch
+scp root@<target>:/home/builder/packages/alpine/armhf/mylife-home-core-1.0.5-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/noarch
 ```
 
 ## Test package
@@ -50,12 +50,12 @@ scp root@<target>:/home/builder/packages/alpine/armhf/mylife-home-core-1.0.4-r0.
 # see required packages
 
 # install package
-sudo apk add --allow-untrusted ~/packages/alpine/armhf/mylife-home-core-1.0.4-r0.apk
+sudo apk add --allow-untrusted ~/packages/alpine/armhf/mylife-home-core-1.0.5-r0.apk
 
 # install from arch-desktop
 su -
-scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/noarch/mylife-home-core-1.0.4-r0.apk .
-apk add --allow-untrusted mylife-home-core-1.0.4-r0.apk
+scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/noarch/mylife-home-core-1.0.5-r0.apk .
+apk add --allow-untrusted mylife-home-core-1.0.5-r0.apk
 
 # run
 rc-update add mylife-home-core-storage-service
