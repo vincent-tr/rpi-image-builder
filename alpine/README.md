@@ -13,7 +13,7 @@ mkdir .abuild
 scp root@arch-desktop:/home/builder/raspberrypi/image-builder/abuild/* .abuild
 ```
 
-# Install node LTS
+# Install node from edge
 
 ```
 wget http://dl-3.alpinelinux.org/alpine/edge/main/armhf/nodejs-npm-8.9.1-r0.apk
