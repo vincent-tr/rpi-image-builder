@@ -16,18 +16,18 @@ abuild -r
 
 # move package on arch-desktop
 # on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
+scp root@<target>:/home/builder/packages/alpine/armhf/gpio-admin-2.0.0-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
 ```
 
 ## Test package
 
 ```
 # install package
-sudo apk add --allow-untrusted ~/packages/alpine/armhf/inspircd-2.0.24-r0.apk
+sudo apk add --allow-untrusted ~/packages/alpine/armhf/gpio-admin-2.0.0-r0.apk
 
 # install from arch-desktop
 su -
-scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/armhf/inspircd-2.0.24-r0.apk .
-apk add --allow-untrusted inspircd-2.0.24-r0.apk
+scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/armhf/gpio-admin-2.0.0-r0.apk .
+apk add --allow-untrusted gpio-admin-2.0.0-r0.apk
 
 ```
