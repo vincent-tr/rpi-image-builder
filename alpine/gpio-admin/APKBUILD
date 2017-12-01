@@ -1,0 +1,37 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=gpio-admin
+pkgver=2.0.0
+pkgrel=0
+pkgdesc="A command-line tool to export or unexport the Raspberry Pi's GPIO pins and allow only the user to control then."
+arch="all"
+url="https://github.com/mylife-home/gpio-admin"
+license="LGPL3"
+depends="musl"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/mylife-home/gpio-admin/archive/v$pkgver.tar.gz"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  cd "$builddir"
+
+  ./configure \
+    --uid=0 \
+    --disable-interactive \
+    --prefix=/usr/lib/inspircd \
+    --binary-dir=/usr/bin \
+    --module-dir=/usr/lib/inspircd/modules \
+    --config-dir=/etc/inspircd \
+    --data-dir=/var/lib/inspircd \
+    --log-dir=/var/log/inspircd \
+    --enable-epoll
+
+  make
+}
+
+package() {
+  cd "$srcdir/inspircd-$pkgver"
+  make DESTDIR="$pkgdir/usr" install
+}
