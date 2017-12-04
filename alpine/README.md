@@ -24,3 +24,25 @@ apk add --allow-untrusted ./nodejs-npm-8.9.1-r0.apk
 apk add --allow-untrusted ./nodejs-8.9.1-r0.apk
 apk del nodejs-npm
 ```
+
+# Update alpine version
+
+```
+setup-apkrepos
+# edit
+# change repo version
+apk update
+apk upgrade
+reboot
+
+# update kernel/boot
+update-kernal -a armhf -f rpi2 /tmp
+update-kernal -a armhf -f rpi /tmp
+mount -o remount,rw /media/mmcblk0p1/
+cp -r dtbs/* /media/mmcblk0p1/
+cp * /media/mmcblk0p1/boot
+# cp: omitting directory 'dtbs' => OK
+reboot
+```
+
+https://wiki.alpinelinux.org/wiki/Upgrading_Alpine
