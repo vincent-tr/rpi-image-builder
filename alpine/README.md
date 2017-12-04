@@ -36,13 +36,25 @@ apk upgrade
 reboot
 
 # update kernel/boot
-update-kernal -a armhf -f rpi2 /tmp
-update-kernal -a armhf -f rpi /tmp
+
+# prepare in /tmp
+update-kernel -a armhf -f rpi2 /tmp
+update-kernel -a armhf -f rpi /tmp
+
+# local
 mount -o remount,rw /media/mmcblk0p1/
+cd /tmp
 cp -r dtbs/* /media/mmcblk0p1/
 cp * /media/mmcblk0p1/boot
 # cp: omitting directory 'dtbs' => OK
 reboot
+
+# install from remote update-kernel
+mount -o remount,rw /media/mmcblk0p1/
+scp -r root@rpi3-devel:/tmp/dtbs/* /media/mmcblk0p1/
+scp root@rpi3-devel:/tmp/* /media/mmcblk0p1/boot
+reboot
+
 ```
 
 https://wiki.alpinelinux.org/wiki/Upgrading_Alpine
