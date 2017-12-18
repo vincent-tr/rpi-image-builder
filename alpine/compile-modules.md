@@ -1,5 +1,6 @@
-```
 # modules build
+
+```
 apk -p /tmp/root-fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
 # build modules
 apk add git make gcc
@@ -16,10 +17,14 @@ make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi2 M=/tmp/mylife-home-driv
 rm -rf /tmp/root-fs
 rm -rf /tmp/mylife-home-drivers-ac
 
-# modules dans /tmp/extra-rpi  /tmp/extra-rpi2
+# modules are in /tmp/extra-rpi  /tmp/extra-rpi2
+```
 
 # modloops build
+
+```
 apk add squashfs-tools
+
 # rpi1
 mkdir -p /tmp/modloop-rpi
 mkdir -p /tmp/new-modloop-rpi
@@ -35,6 +40,7 @@ depmod -a -b /tmp/root-fs 4.9.65-0-rpi
 rm -rf /tmp/root-fs
 mksquashfs /tmp/new-modloop-rpi /tmp/modloop-rpi.sqfs -comp xz -exit-on-error
 rm -rf /tmp/new-modloop-rpi
+
 # rpi2
 mkdir -p /tmp/modloop-rpi2
 mkdir -p /tmp/new-modloop-rpi2
@@ -50,9 +56,11 @@ depmod -a -b /tmp/root-fs 4.9.65-0-rpi2
 rm -rf /tmp/root-fs
 mksquashfs /tmp/new-modloop-rpi2 /tmp/modloop-rpi2.sqfs -comp xz -exit-on-error
 rm -rf /tmp/new-modloop-rpi2
-#
-apk del squashfs-tools
 
-# TODO:
-# modloops install
+# cleanup
+apk del squashfs-tools
 ```
+
+# modloops install
+
+TODO
