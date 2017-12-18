@@ -1,21 +1,29 @@
 # modules build
 
 ```
-apk -p /tmp/root-fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
-# build modules
 apk add git make gcc
+apk -p /tmp/root-fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
+
+# build modules
 mkdir -p /tmp/extra-rpi
 mkdir -p /tmp/extra-rpi2
 cd /tmp
+
+# rpi1
 git clone https://github.com/mylife-home/mylife-home-drivers-ac
 make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi M=/tmp/mylife-home-drivers-ac/drivers modules
 cp /tmp/mylife-home-drivers-ac/drivers/*.ko /tmp/extra-rpi
 make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi M=/tmp/mylife-home-drivers-ac/drivers clean
+
+# rpi2
 make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi2 M=/tmp/mylife-home-drivers-ac/drivers modules
 cp /tmp/mylife-home-drivers-ac/drivers/*.ko /tmp/extra-rpi2
 make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi2 M=/tmp/mylife-home-drivers-ac/drivers clean
+
+# cleanup
 rm -rf /tmp/root-fs
 rm -rf /tmp/mylife-home-drivers-ac
+apk del git make gcc
 
 # modules are in /tmp/extra-rpi  /tmp/extra-rpi2
 ```
