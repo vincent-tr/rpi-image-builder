@@ -31,9 +31,9 @@ apk del nodejs-npm
 
 ```
 setup-apkrepos
-lbu commit -d
 # edit
 # change repo version
+lbu commit -d
 apk update
 apk upgrade
 reboot
