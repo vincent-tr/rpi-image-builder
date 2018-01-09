@@ -7,6 +7,7 @@ abuild_subdir=$(basename $(dirname $(dirname $script)))
 
 mkdir -p $tmp_dir
 
+cd $(dirname $script)
 abuild checksum
 abuild -r -P $tmp_dir
 
