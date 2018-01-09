@@ -1,13 +1,21 @@
 # Prepare env (v2)
 
 ```
+apk add sudo
 adduser -D builder
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 su - builder
-scp -r root@home-resources:/home/alpine-build/ssh-keys ~
-mv ssh-keys/* .ssh
-rmdir ssh-keys
+mkdir ~/.ssh
+scp -r root@home-resources:/home/alpine-build/ssh-keys/* ~/.ssh/
 chmod 700 .ssh
+# test ssh public key auth : ssh alpine-build@home-resources
+
+sudo apk add sshfs
+mkdir ~/alpine-build-home-resources
+sudo modprobe fuse
+# on home-resources : 'cat /etc/passwd | grep alpine-build' to get uid/gid
+sshfs -o uid=1001,gid=1001 alpine-build@home-resources:/home/alpine-build /home/builder/alpine-build-home-resources
+# umount : fusermount -u /home/builder/alpine-build-home-resources
 ```
 
 # Prepare env
