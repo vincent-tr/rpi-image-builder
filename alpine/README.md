@@ -1,23 +1,8 @@
-# Prepare env (v2)
+# Prepare env
 
 as root :
 ```
 apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi-image-builder/master/alpine/setup-base.sh && chmod +x setup-base.sh && ./setup-base.sh
-```
-
-# Prepare env
-
-```
-apk add --no-cache --virtual .build-utils alpine-sdk
-adduser -D builder
-echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-addgroup builder abuild
-mkdir -p /var/cache/distfiles
-chmod a+w /var/cache/distfiles
-su - builder
-# restore ~/.abuild
-mkdir .abuild
-scp root@arch-desktop:/home/builder/raspberrypi/image-builder/abuild/* .abuild
 ```
 
 # Install node from edge
