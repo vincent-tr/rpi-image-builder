@@ -1,15 +1,16 @@
 #!/bin/sh
 
 script=$(readlink -f "$0")
-target_dir=$1
+package=$1
+target_dir=$2
 tmp_dir=/tmp/rpi-image-builder-output
-abuild_subdir=$(basename $(dirname $(dirname $script)))
+package_dir=$(dirname $script)/$package
 
 mkdir -p $tmp_dir
 
-cd $(dirname $script)
+cd $package_dir
 abuild checksum
 abuild -r -P $tmp_dir
 
-cp $tmp_dir/$abuild_subdir/armhf/*.apk $target_dir
+cp $tmp_dir/alpine/armhf/*.apk $target_dir
 rm -rf $tmp_dir

@@ -9,7 +9,7 @@ cf ../README.md
 ```
 su - builder
 mkdir -p ~/packages
-./abuild.sh ~/packages
+../abuild-package.sh $(basename $(pwd)) ~/packages
 ```
 
 ## Test package
