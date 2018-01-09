@@ -9,6 +9,6 @@ do
     continue;
   fi
   echo "GENERATING PLUGIN : $plugin_name"
-  ./build.sh "$plugin_name" "$plugin_version" "$plugin_noarch" "$plugin_dependencies"
+  ./build-one.sh "$plugin_name" "$plugin_version" "$plugin_noarch" "$plugin_dependencies"
   echo "PLUGIN GENERATED : $plugin_name (noarch:$plugin_noarch)"
 done < plugin-list
