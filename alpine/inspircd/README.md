@@ -8,15 +8,8 @@ cf ../README.md
 
 ```
 su - builder
-rm -f ~/packages/alpine/armhf/APKINDEX.tar.gz
-git clone https://github.com/vincent-tr/rpi-image-builder
-cd rpi-image-builder/alpine/inspircd
-abuild checksum
-abuild -r
-
-# move package on arch-desktop
-# on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
+mkdir -p ~/packages
+../abuild-package.sh $(basename $(pwd)) ~/packages
 ```
 
 ## Test package
@@ -24,11 +17,6 @@ scp root@<target>:/home/builder/packages/alpine/armhf/inspircd-2.0.24-r0.apk /ho
 ```
 # install package
 sudo apk add --allow-untrusted ~/packages/alpine/armhf/inspircd-2.0.24-r0.apk
-
-# install from arch-desktop
-su -
-scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/armhf/inspircd-2.0.24-r0.apk .
-apk add --allow-untrusted inspircd-2.0.24-r0.apk
 
 # dl configs
 cd /etc/inspircd
