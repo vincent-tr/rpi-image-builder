@@ -26,7 +26,7 @@ rgid=\$(ssh alpine-build@home-resources id -g)
 sshfs -o uid=\$ruid,gid=\$rgid alpine-build@home-resources:/home/alpine-build $rmount
 # umount : fusermount -u $rmount
 
-#prepare for abuild
+# prepare for abuild
 sudo addgroup builder abuild
 sudo mkdir -p /var/cache/distfiles
 sudo chmod a+w /var/cache/distfiles
@@ -37,23 +37,4 @@ cp $rmount/abuild/* $home/.abuild
 cd ~
 git clone https://github.com/vincent-tr/rpi-image-builder
 
-eof
-
-#!/bin/sh
-
-home=/home/builder
-rmount=$home/alpine-build-home-resources
-
-sudo -i -u builder /bin/sh - << eof
-
-#prepare for abuild
-sudo addgroup builder abuild
-sudo mkdir -p /var/cache/distfiles
-sudo chmod a+w /var/cache/distfiles
-mkdir -p $home/.abuild
-cp $rmount/abuild/* $home/.abuild
-
-# prepare git repo
-cd ~
-git clone https://github.com/vincent-tr/rpi-image-builder
 eof
