@@ -56,5 +56,4 @@ cp $rmount/abuild/* $home/.abuild
 # prepare git repo
 cd ~
 git clone https://github.com/vincent-tr/rpi-image-builder
-
 eof
