@@ -8,15 +8,8 @@ cf ../README.md
 
 ```
 su - builder
-rm -f ~/packages/alpine/armhf/APKINDEX.tar.gz
-git clone https://github.com/vincent-tr/rpi-image-builder
-cd rpi-image-builder/alpine/nodejs-pm2
-# abuild checksum # no source -> no need for checksum
-abuild -r
-
-# move package on arch-desktop
-# on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/armhf/nodejs-pm2-2.7.2-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/noarch
+mkdir -p ~/packages
+../abuild-package.sh $(basename $(pwd)) ~/packages
 ```
 
 ## Test package

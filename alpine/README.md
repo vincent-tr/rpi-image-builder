@@ -5,6 +5,17 @@ as root :
 apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi-image-builder/master/alpine/setup-base.sh && chmod +x setup-base.sh && ./setup-base.sh
 ```
 
+# Build all packages
+
+```
+su - builder
+mkdir -p ~/packages
+./abuild-package.sh gpio-admin ~/packages
+./abuild-package.sh inspircd ~/packages
+./abuild-package.sh nodejs-pm2 ~/packages
+# TODO
+```
+
 # Install node from edge
 
 ```
