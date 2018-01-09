@@ -1,3 +1,15 @@
+# Prepare env (v2)
+
+```
+adduser -D builder
+echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+su - builder
+scp -r root@home-resources:/home/alpine-build/ssh-keys ~
+mv ssh-keys/* .ssh
+rmdir ssh-keys
+chmod 700 .ssh
+```
+
 # Prepare env
 
 ```
