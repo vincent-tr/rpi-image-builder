@@ -16,10 +16,5 @@ mkdir -p ~/packages
 
 ```
 # install package
-sudo apk add --allow-untrusted ~/packages/alpine/armhf/nodejs-pm2-2.7.2-r0.apk
-
-# install from arch-desktop
-su -
-scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/noarch/nodejs-pm2-2.7.2-r0.apk .
-apk add --allow-untrusted nodejs-pm2-2.7.2-r0.apk
+sudo apk add --allow-untrusted ~/packages/nodejs-pm2-2.7.2-r0.apk
 ```
