@@ -16,5 +16,5 @@ mkdir -p ~/packages
 
 ```
 # install package
-sudo apk add --allow-untrusted ~/packages/gpio-admin-2.0.0-r0.apk
+sudo apk add --no-cache --allow-untrusted ~/packages/gpio-admin-2.0.0-r0.apk
 ```

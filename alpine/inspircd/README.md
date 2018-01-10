@@ -16,7 +16,7 @@ mkdir -p ~/packages
 
 ```
 # install package
-sudo apk add --allow-untrusted ~/packages/inspircd-2.0.24-r0.apk
+sudo apk add --no-cache --allow-untrusted ~/packages/inspircd-2.0.24-r0.apk
 
 # dl configs
 cd /etc/inspircd

@@ -16,5 +16,5 @@ mkdir -p ~/packages
 
 ```
 # install package
-sudo apk add --allow-untrusted ~/packages/nodejs-pm2-2.7.2-r0.apk
+sudo apk add --no-cache --allow-untrusted ~/packages/nodejs-pm2-2.7.2-r0.apk
 ```

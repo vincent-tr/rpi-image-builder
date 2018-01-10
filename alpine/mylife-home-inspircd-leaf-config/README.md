@@ -16,8 +16,8 @@ mkdir -p ~/packages
 
 ```
 # install package
-sudo apk add --allow-untrusted ~/packages/inspircd-2.0.24-r0.apk
-sudo apk add --allow-untrusted ~/packages/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
+sudo apk add --no-cache --allow-untrusted ~/packages/inspircd-2.0.24-r0.apk
+sudo apk add --no-cache --allow-untrusted ~/packages/mylife-home-inspircd-leaf-config-1.0.0-r0.apk
 
 # run daemon "by hand"
 su - -s /bin/sh inspircd

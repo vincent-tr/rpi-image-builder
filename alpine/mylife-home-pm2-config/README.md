@@ -16,8 +16,8 @@ mkdir -p ~/packages
 
 ```
 # install package
-sudo apk add --allow-untrusted ~/packages/nodejs-pm2-2.7.2-r0.apk
-sudo apk add --allow-untrusted ~/packages/mylife-home-pm2-config-1.0.0-r0.apk
+sudo apk add --no-cache --allow-untrusted ~/packages/nodejs-pm2-2.7.2-r0.apk
+sudo apk add --no-cache --allow-untrusted ~/packages/mylife-home-pm2-config-1.0.0-r0.apk
 
 # run daemon "normally"
 rc-update add pm2
