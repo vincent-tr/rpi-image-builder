@@ -10,9 +10,14 @@ apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi
 ```
 su - builder
 mkdir -p ~/packages
-./abuild-package.sh gpio-admin ~/packages
+
 ./abuild-package.sh inspircd ~/packages
+./abuild-package.sh mylife-home-inspircd-leaf-config ~/packages inspircd
+
 ./abuild-package.sh nodejs-pm2 ~/packages
+
+./abuild-package.sh gpio-admin ~/packages
+
 # TODO
 ```
 

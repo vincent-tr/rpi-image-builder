@@ -8,15 +8,8 @@ cf ../README.md
 
 ```
 su - builder
-rm -f ~/packages/alpine/noarch/APKINDEX.tar.gz
-git clone https://github.com/vincent-tr/rpi-image-builder
-cd rpi-image-builder/alpine/mylife-home-inspircd-leaf-config
-abuild checksum
-abuild -r
-
-# move package on arch-desktop
-# on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/armhf/mylife-home-inspircd-leaf-config-1.0.0-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/noarch
+mkdir -p ~/packages
+../abuild-package.sh $(basename $(pwd)) ~/packages inspircd
 ```
 
 ## Test package
