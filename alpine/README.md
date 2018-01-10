@@ -21,13 +21,13 @@ mkdir -p ~/packages
 ./abuild-package.sh gpio-admin ~/packages
 
 ./mylife-home-core-plugins/configure.sh hw-blaster
-./abuild-package.sh mylife-home-core-plugins ~/packages pi-blaster
+./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core,pi-blaster
 ./mylife-home-core-plugins/configure.sh hw-lirc
-./abuild-package.sh mylife-home-core-plugins ~/packages lirc
+./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core,lirc
 ./mylife-home-core-plugins/configure.sh hw-sensors
-./abuild-package.sh mylife-home-core-plugins ~/packages
+./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core
 ./mylife-home-core-plugins/configure.sh hw-sysfs
-./abuild-package.sh mylife-home-core-plugins ~/packages
+./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core
 ```
 
 # Install node from edge
