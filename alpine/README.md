@@ -30,6 +30,11 @@ mkdir -p ~/packages
 ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core
 ```
 
+TODO:
+ - pi-blaster (+plugin)
+ - lirc (+plugin)
+ - sysfs ac drivers
+
 # Install node from edge
 
 ```
