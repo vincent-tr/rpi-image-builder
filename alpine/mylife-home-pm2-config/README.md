@@ -8,24 +8,16 @@ cf ../README.md
 
 ```
 su - builder
-rm -f ~/packages/alpine/noarch/APKINDEX.tar.gz
-git clone https://github.com/vincent-tr/rpi-image-builder
-cd rpi-image-builder/alpine/mylife-home-pm2-config
-abuild checksum
-abuild -r
-
-# move package on arch-desktop
-# on builder@arch-desktop
-scp root@<target>:/home/builder/packages/alpine/armhf/mylife-home-pm2-config-1.0.0-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/noarch
+mkdir -p ~/packages
+../abuild-package.sh $(basename $(pwd)) ~/packages nodejs-pm2
 ```
 
 ## Test package
 
 ```
-# install nodejs-pm2, cf ../nodejs-pm2/README.md
-
 # install package
-sudo apk add --allow-untrusted ~/packages/alpine/armhf/mylife-home-pm2-config-1.0.0-r0.apk
+sudo apk add --allow-untrusted ~/packages/nodejs-pm2-2.7.2-r0.apk
+sudo apk add --allow-untrusted ~/packages/mylife-home-pm2-config-1.0.0-r0.apk
 
 # install from arch-desktop
 su -
