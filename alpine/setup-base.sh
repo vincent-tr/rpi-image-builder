@@ -8,7 +8,8 @@ adduser -D builder
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 home=/home/builder
-rmount=$home/alpine-build-home-resources
+rmount_build=$home/alpine-build-home-resources
+rmount_packages=$home/alpine-packages-home-resources
 
 sudo -i -u builder /bin/sh - << eof
 
@@ -19,12 +20,15 @@ scp -r root@home-resources:/home/alpine-build/ssh-keys/* $home/.ssh/
 chmod 700 $home/.ssh
 
 # add ssh mount
-mkdir -p $rmount
 sudo modprobe fuse
 ruid=\$(ssh alpine-build@home-resources id -u)
 rgid=\$(ssh alpine-build@home-resources id -g)
-sshfs -o uid=\$ruid,gid=\$rgid alpine-build@home-resources:/home/alpine-build $rmount
-# umount : fusermount -u $rmount
+mkdir -p $rmount_build
+sshfs -o uid=\$ruid,gid=\$rgid alpine-build@home-resources:/home/alpine-build $rmount_build
+# umount : fusermount -u $rmount_build
+mkdir -p $rmount_packages
+sshfs -o uid=\$ruid,gid=\$rgid alpine-build@home-resources:/var/www/alpine-packages $rmount_packages
+# umount : fusermount -u $rmount_packages
 
 # prepare for abuild
 sudo addgroup builder abuild

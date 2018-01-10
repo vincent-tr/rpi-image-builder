@@ -28,13 +28,13 @@ mkdir -p ~/packages
 apk index -o ~/packages/APKINDEX.tar.gz ~/packages/*.apk
 abuild-sign -k ~/.abuild/builder-59f0368c.rsa ~/packages/APKINDEX.tar.gz
 
-rm -rf ~/alpine-build-home-resources/alpine-packages/armhf
-mkdir ~/alpine-build-home-resources/alpine-packages/armhf
-cp ~/packages/* ~/alpine-build-home-resources/alpine-packages/armhf
+rm -rf ~/alpine-packages-home-resources/alpine-packages/armhf
+mkdir ~/alpine-packages-home-resources/alpine-packages/armhf
+cp ~/packages/* ~/alpine-packages-home-resources/alpine-packages/armhf
 
 sudo cp ~/.abuild/builder-59f0368c.rsa.pub /etc/apk/keys
 # TODO: add real repository from home resource web
-# sudo sh -c "echo $HOME/alpine-build-home-resources/alpine-packages >> /etc/apk/repositories"
+# sudo sh -c "echo $HOME/alpine-packages-home-resources/alpine-packages >> /etc/apk/repositories"
 sudo apk update
 ```
 
