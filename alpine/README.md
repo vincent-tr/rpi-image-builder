@@ -28,6 +28,18 @@ mkdir -p ~/packages
 ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core
 ./mylife-home-core-plugins/configure.sh hw-sysfs
 ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core
+
+apk index -o ~/packages/APKINDEX.tar.gz ~/packages/*.apk
+abuild-sign -k ~/.abuild/builder-59f0368c.rsa ~/packages/APKINDEX.tar.gz
+
+rm -rf ~/alpine-build-home-resources/alpine-packages/armhf
+mkdir ~/alpine-build-home-resources/alpine-packages/armhf
+cp ~/packages/* ~/alpine-build-home-resources/alpine-packages/armhf
+
+sudo cp ~/.abuild/builder-59f0368c.rsa.pub /etc/apk/keys
+# TODO: add real repository from home resource web
+# sudo sh -c "echo $HOME/alpine-build-home-resources/alpine-packages >> /etc/apk/repositories"
+sudo apk update
 ```
 
 TODO:
@@ -91,3 +103,4 @@ reboot
 ## References
 
 https://wiki.alpinelinux.org/wiki/Upgrading_Alpine
+https://engineering.fundingcircle.com/blog/2015/04/28/create-alpine-linux-repository/
