@@ -19,11 +19,6 @@ mkdir -p ~/packages
 sudo apk add --allow-untrusted ~/packages/nodejs-pm2-2.7.2-r0.apk
 sudo apk add --allow-untrusted ~/packages/mylife-home-pm2-config-1.0.0-r0.apk
 
-# install from arch-desktop
-su -
-scp root@arch-desktop:/home/builder/raspberrypi/image-builder/alpine-packages/noarch/mylife-home-pm2-config-1.0.0-r0.apk .
-apk add --allow-untrusted mylife-home-pm2-config-1.0.0-r0.apk
-
 # run daemon "normally"
 rc-update add pm2
 rc-service pm2 start
