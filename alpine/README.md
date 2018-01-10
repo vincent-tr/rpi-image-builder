@@ -20,7 +20,14 @@ mkdir -p ~/packages
 
 ./abuild-package.sh gpio-admin ~/packages
 
-# TODO
+./mylife-home-core-plugins/configure.sh hw-blaster
+../abuild-package.sh mylife-home-core-plugins ~/packages pi-blaster
+./mylife-home-core-plugins/configure.sh hw-lirc
+../abuild-package.sh mylife-home-core-plugins ~/packages lirc
+./mylife-home-core-plugins/configure.sh hw-sensors
+../abuild-package.sh mylife-home-core-plugins ~/packages
+./mylife-home-core-plugins/configure.sh hw-sysfs
+../abuild-package.sh mylife-home-core-plugins ~/packages
 ```
 
 # Install node from edge
