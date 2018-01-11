@@ -50,13 +50,13 @@ TODO:
 ```
 su - builder
 cd rpi-image-builder/alpine
-sudo ./build-linux-modloops.sh
+./build-linux-modloops.sh
 ```
 
 ## modloops install
 
 modloops are /tmp/modloop-rpi /tmp/modloop-rpi2
-TODO
+TODO : package it !
 
 # Install node from edge
 
