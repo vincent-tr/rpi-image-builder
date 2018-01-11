@@ -42,6 +42,10 @@ TODO:
  - lirc (+plugin)
  - sysfs ac drivers
 
+# Build kernel modloop
+
+see linuxp-modloop/README.md
+
 # Install node from edge
 
 ```
