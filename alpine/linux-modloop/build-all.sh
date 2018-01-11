@@ -1,5 +1,6 @@
 #!/bin/sh
 
+base_directory=$(dirname $(readlink -f "$0"))
 version=$(uname -r | grep -oE "\d+\.\d+\.\d+\-\d+")
 extra_rpi_dir=/tmp/extra-rpi
 extra_rpi2_dir=/tmp/extra-rpi2
@@ -13,7 +14,7 @@ mkdir -p /tmp/extra-rpi
 mkdir -p /tmp/extra-rpi2
 
 # build modules
-./build-mylife-home-drivers-ac.sh
+$base_directory/build-mylife-home-drivers-ac.sh
 
 # cleanup
 rm -rf /tmp/root-fs
@@ -21,4 +22,4 @@ apk del git make gcc
 
 # modules are in $extra_rpi_dir and $extra_rpi2_dir
 # build modloops
-./build-modloops.sh
+$base_directory/build-modloops.sh
