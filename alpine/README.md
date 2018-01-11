@@ -44,7 +44,16 @@ TODO:
 
 # Build kernel modloop
 
-see linuxp-modloop/README.md
+## modloops build
+
+```
+sudo linux-modloop/build-all.sh
+```
+
+## modloops install
+
+modloops are /tmp/modloop-rpi /tmp/modloop-rpi2
+TODO
 
 # Install node from edge
 
