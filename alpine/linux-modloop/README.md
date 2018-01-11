@@ -1,7 +1,7 @@
 # modloops build
 
 ```
-./build-all.sh
+sudo ./build-all.sh
 ```
 
 # modloops install
