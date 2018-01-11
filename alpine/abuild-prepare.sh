@@ -7,5 +7,5 @@ sudo apk add --no-cache --virtual .build-utils alpine-sdk
 sudo addgroup builder abuild
 sudo mkdir -p /var/cache/distfiles
 sudo chmod a+w /var/cache/distfiles
-mkdir -p $home/.abuild
+mkdir -p $HOME/.abuild
 cp $HOME/alpine-build-home-resources/abuild/* $HOME/.abuild
