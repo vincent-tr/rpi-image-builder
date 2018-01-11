@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # packages
-apk add --no-cache --virtual .build-utils sudo sshfs git alpine-sdk
+apk add --no-cache sudo sshfs git
 
 # create user
 adduser -D builder
@@ -33,17 +33,6 @@ sshfs -o uid=\$ruid,gid=\$rgid alpine-build@home-resources:/home/alpine-build $r
 mkdir -p $rmount_packages
 sshfs -o uid=\$ruid,gid=\$rgid alpine-build@home-resources:/var/www/alpine-packages $rmount_packages
 # umount : fusermount -u $rmount_packages
-
-eof
-
-# prepare for abuild
-sudo -i -u builder /bin/sh - << eof
-
-sudo addgroup builder abuild
-sudo mkdir -p /var/cache/distfiles
-sudo chmod a+w /var/cache/distfiles
-mkdir -p $home/.abuild
-cp $rmount_build/abuild/* $home/.abuild
 
 eof
 
