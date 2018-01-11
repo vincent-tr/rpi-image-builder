@@ -8,6 +8,7 @@ apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi
 # Build all packages
 
 ```
+./abuild-prepare.sh
 su - builder
 cd rpi-image-builder/alpine
 mkdir -p ~/packages
