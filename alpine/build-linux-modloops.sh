@@ -26,7 +26,7 @@ build_modules_mylife_home_drivers_ac() {
 build_modules() {
   echo "BUILDING MODULES"
 
-  apk add --no-cache git make gcc
+  sudo apk add --no-cache git make gcc
   apk -p /tmp/root-fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
 
   mkdir -p /tmp/extra-rpi
@@ -35,14 +35,14 @@ build_modules() {
   build_modules_mylife_home_drivers_ac
 
   rm -rf /tmp/root-fs
-  apk del git make gcc
+  sudo apk del git make gcc
 }
 
 build_modloop() {
   echo "BUILDING MODLOOPS"
 
   # init
-  apk add --no-cache squashfs-tools
+  sudo apk add --no-cache squashfs-tools
 
   # rpi1
   mkdir -p /tmp/modloop-rpi
@@ -77,7 +77,7 @@ build_modloop() {
   rm -rf /tmp/new-modloop-rpi2
 
   # cleanup
-  apk del squashfs-tools
+  sudo apk del squashfs-tools
 }
 
 build_modules
