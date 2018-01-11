@@ -9,6 +9,7 @@ apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi
 
 ```
 su - builder
+cd rpi-image-builder/alpine
 mkdir -p ~/packages
 
 ./abuild-package.sh inspircd ~/packages
@@ -47,6 +48,8 @@ TODO:
 ## modloops build
 
 ```
+su - builder
+cd rpi-image-builder/alpine
 sudo linux-modloop/build-all.sh
 ```
 
