@@ -5,7 +5,7 @@ extra_rpi_dir=/tmp/extra-rpi
 extra_rpi2_dir=/tmp/extra-rpi2
 output_dir=/tmp
 
-build_modules_mylife-home-drivers-ac() {
+build_modules_mylife_home_drivers_ac() {
   cd /tmp
   git clone https://github.com/mylife-home/mylife-home-drivers-ac
 
@@ -32,7 +32,7 @@ build_modules() {
   mkdir -p /tmp/extra-rpi
   mkdir -p /tmp/extra-rpi2
 
-  build_modules_mylife-home-drivers-ac
+  build_modules_mylife_home_drivers_ac
 
   rm -rf /tmp/root-fs
   apk del git make gcc
