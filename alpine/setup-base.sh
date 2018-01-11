@@ -11,15 +11,19 @@ home=/home/builder
 rmount_build=$home/alpine-build-home-resources
 rmount_packages=$home/alpine-packages-home-resources
 
+# add ssh key for alpine-build@home-resources
 sudo -i -u builder /bin/sh - << eof
 
-# add ssh key for alpine-build@home-resources
 mkdir -p $home/.ssh
 ssh-keyscan home-resources > $home/.ssh/known_hosts
 scp -r root@home-resources:/home/alpine-build/ssh-keys/* $home/.ssh/
 chmod 700 $home/.ssh
 
+eof
+
 # add ssh mount
+sudo -i -u builder /bin/sh - << eof
+
 sudo modprobe fuse
 ruid=\$(ssh alpine-build@home-resources id -u)
 rgid=\$(ssh alpine-build@home-resources id -g)
@@ -30,14 +34,22 @@ mkdir -p $rmount_packages
 sshfs -o uid=\$ruid,gid=\$rgid alpine-build@home-resources:/var/www/alpine-packages $rmount_packages
 # umount : fusermount -u $rmount_packages
 
+eof
+
 # prepare for abuild
+sudo -i -u builder /bin/sh - << eof
+
 sudo addgroup builder abuild
 sudo mkdir -p /var/cache/distfiles
 sudo chmod a+w /var/cache/distfiles
 mkdir -p $home/.abuild
 cp $rmount_build/abuild/* $home/.abuild
 
+eof
+
 # prepare git repo
+sudo -i -u builder /bin/sh - << eof
+
 cd ~
 git clone https://github.com/vincent-tr/rpi-image-builder
 
