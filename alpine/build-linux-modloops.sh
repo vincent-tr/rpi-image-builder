@@ -5,11 +5,6 @@ extra_rpi_dir=/tmp/extra-rpi
 extra_rpi2_dir=/tmp/extra-rpi2
 output_dir=/tmp
 
-build_modules
-
-# modules are in $extra_rpi_dir and $extra_rpi2_dir
-build_modloop
-
 build_modules_mylife-home-drivers-ac() {
   cd /tmp
   git clone https://github.com/mylife-home/mylife-home-drivers-ac
@@ -84,3 +79,7 @@ build_modloop() {
   # cleanup
   apk del squashfs-tools
 }
+
+build_modules
+# modules are in $extra_rpi_dir and $extra_rpi2_dir
+build_modloop
