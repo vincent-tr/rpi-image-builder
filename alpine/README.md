@@ -50,7 +50,7 @@ TODO:
 ```
 su - builder
 cd rpi-image-builder/alpine
-sudo linux-modloop/build-all.sh
+sudo build-linux-modloops.sh
 ```
 
 ## modloops install
