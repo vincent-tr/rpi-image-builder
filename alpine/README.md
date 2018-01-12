@@ -98,7 +98,9 @@ tar --owner=root --group=root -zcvf root/todo-hostname.apkovl.tar.gz etc
 rm -r etc
 tar --owner=root --group=root -zcvf base-config.tar.gz root
 rm -r root
+cp base-config.tar.gz ~/alpine-build-home-resources/deploy-data/files/
 
+cd ~
 rm -rf /tmp/update-config
 sudo apk del .build-utils
 ```
