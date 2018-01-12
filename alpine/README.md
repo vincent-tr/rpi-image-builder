@@ -7,9 +7,12 @@ apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi
 
 # Build all packages
 
+## build
+
 ```
 # as root :
 /home/builder/rpi-image-builder/alpine/abuild-prepare.sh
+
 su - builder
 cd rpi-image-builder/alpine
 mkdir -p ~/packages
@@ -31,10 +34,18 @@ mkdir -p ~/packages
 apk index -o ~/packages/APKINDEX.tar.gz ~/packages/*.apk
 abuild-sign -k ~/.abuild/builder-59f0368c.rsa ~/packages/APKINDEX.tar.gz
 
+# copy on home-resources
 rm -rf ~/alpine-packages-home-resources/alpine-packages/armhf
 mkdir ~/alpine-packages-home-resources/alpine-packages/armhf
 cp ~/packages/* ~/alpine-packages-home-resources/alpine-packages/armhf
 
+# cleanup
+rm -rf ~/packages
+```
+
+## test
+
+```
 sudo cp ~/.abuild/builder-59f0368c.rsa.pub /etc/apk/keys
 sudo sh -c "echo http://home-resources/alpine-packages >> /etc/apk/repositories"
 sudo apk update
@@ -47,11 +58,20 @@ TODO:
 
 # Kernel package
 
+## build
+
 ```
 su - builder
 cd rpi-image-builder/alpine
+
 ./package-kernel.sh
-# TODO : package it !
+
+# copy on home-resources
+mkdir -p ~/alpine-build-home-resources/kernels
+cp /tmp/kernel-*.tar.gz ~/alpine-build-home-resources/kernels
+
+# cleanup
+rm /tmp/kernel-*.tar.gz
 ```
 
 # Install node from edge
