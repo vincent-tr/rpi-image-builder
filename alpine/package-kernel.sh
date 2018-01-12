@@ -60,8 +60,12 @@ build_modules_mylife_home_drivers_ac() {
 
 setup_kernel() {
   sudo apk add --no-cache --virtual .build-tools fakeroot
+
   sudo update-kernel -a armhf -f rpi2 $kernel_dir
   sudo update-kernel -a armhf -f rpi $kernel_dir
+
+  sudo chown -R $(id -u -n):$(id -g -n) $kernel_dir
+
   sudo apk del .build-tools
 }
 
