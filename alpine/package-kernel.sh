@@ -16,8 +16,11 @@ main() {
   kernel_dir=$working_directory/kernel
 
   build_modules
+  # modules are in $extra_rpi_dir and $extra_rpi2_dir
   setup_kernel
+  # kernel is in $kernel_dir
   build_modloop
+  # modloops are built in-place in $kernel_dir
   package
 }
 
@@ -80,8 +83,8 @@ build_modloop() {
   # init
   sudo apk add --no-cache --virtual .build-tools squashfs-tools
 
-  build_modloop_by_name modloop-rpi
-  build_modloop_by_name modloop-rpi2
+  build_modloop_by_name modloop-rpi $extra_rpi_dir
+  build_modloop_by_name modloop-rpi2 $extra_rpi2_dir
 
   # cleanup
   sudo apk del .build-tools
@@ -89,6 +92,7 @@ build_modloop() {
 
 build_modloop_by_name() {
   local modloop_name=$1
+  local extra_dir=$2
   local working_root_fs=$working_directory/root-fs
 
   mkdir -p $working_directory/new-$modloop_name
@@ -103,15 +107,15 @@ build_modloop_by_name() {
 
   # pick new modules
   mkdir -p $working_directory/new-$modloop_name/modules/$version-rpi/extra
-  cp -r $extra_rpi_dir/* $working_directory/new-$modloop_name/modules/$version-rpi/extra
-  rm -rf $extra_rpi_dir
+  cp -r $extra_dir/* $working_directory/new-$modloop_name/modules/$version-rpi/extra
+  rm -rf $extra_dir
 
   # build squashfs
   mkdir -p $working_root_fs
   ln -s $working_directory/new-$modloop_name $working_root_fs/lib
   depmod -a -b $working_root_fs $version-rpi
   rm -rf $working_root_fs
-  mksquashfs $working_directory/new-$modloop_name $output_dir/$modloop_name -comp xz -exit-on-error
+  mksquashfs $working_directory/new-$modloop_name $kernel_dir/$modloop_name -comp xz -exit-on-error
   rm -rf $working_directory/new-$modloop_name
 }
 
