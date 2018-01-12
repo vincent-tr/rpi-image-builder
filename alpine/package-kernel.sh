@@ -125,9 +125,9 @@ package() {
 
   local root_fs=$working_directory/root
 
-  cp -r $kernel_dir/dtbs/* $root_fs
   mkdir -p $root_fs/boot
-  for $flavor in rpi rpi2; do
+  cp -r $kernel_dir/dtbs/* $root_fs
+  for flavor in rpi rpi2; do
     cp \
       $kernel_dir/System.map-$flavor \
       $kernel_dir/config-$flavor \
@@ -137,7 +137,9 @@ package() {
       $root_fs/boot
   done
 
-  echo TODO
+  tar -C $working_directory -zcvf $output_dir/kernel-$version.tar.gz root
+
+  rm -rf $working_directory
 }
 
 main
