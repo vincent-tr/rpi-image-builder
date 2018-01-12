@@ -11,12 +11,11 @@ main() {
   working_directory=/tmp/kernel-update
   output_dir=/tmp
 
-  extra_rpi_dir=$working_directory/extra-rpi
-  extra_rpi2_dir=$working_directory/extra-rpi2
+  extra_dir=$working_directory/extra-modules
   kernel_dir=$working_directory/kernel
 
   build_modules
-  # modules are in $extra_rpi_dir and $extra_rpi2_dir
+  # modules are in $extra_dir
   setup_kernel
   # kernel is in $kernel_dir
   build_modloop
@@ -34,8 +33,8 @@ build_modules() {
   mkdir -p $working_root_fs
   fakeroot apk -p $working_root_fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
 
-  mkdir -p $extra_rpi_dir
-  mkdir -p $extra_rpi2_dir
+  mkdir -p $extra_dir/rpi
+  mkdir -p $extra_dir/rpi2
 
   build_modules_mylife_home_drivers_ac $working_root_fs
 
@@ -44,6 +43,7 @@ build_modules() {
 }
 
 build_modules_mylife_home_drivers_ac() {
+
   local src_dir=$working_directory/mylife-home-drivers-ac
   local working_root_fs=$1
 
@@ -51,12 +51,12 @@ build_modules_mylife_home_drivers_ac() {
 
   # rpi1
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers modules
-  cp $src_dir/drivers/*.ko $extra_rpi_dir
+  cp $src_dir/drivers/*.ko $extra_dir/rpi
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers clean
 
   # rpi2
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers modules
-  cp $src_dir/drivers/*.ko $extra_rpi2_dir
+  cp $src_dir/drivers/*.ko $extra_dir/rpi2
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers clean
 
   # cleanup
@@ -65,6 +65,7 @@ build_modules_mylife_home_drivers_ac() {
 
 setup_kernel() {
   echo "SETUPING KERNEL"
+
   sudo apk add --no-cache --virtual .build-tools fakeroot
 
   sudo update-kernel -a armhf -f rpi2 $kernel_dir
@@ -80,20 +81,21 @@ build_modloop() {
 
   local working_root_fs=$working_directory/root-fs
 
-  # init
   sudo apk add --no-cache --virtual .build-tools squashfs-tools
 
-  build_modloop_by_name modloop-rpi $extra_rpi_dir
-  build_modloop_by_name modloop-rpi2 $extra_rpi2_dir
+  build_modloop_by_flavor rpi
+  build_modloop_by_flavor rpi2
 
-  # cleanup
+  rm -rf $extra_dir
   sudo apk del .build-tools
 }
 
-build_modloop_by_name() {
-  local modloop_name=$1
-  local extra_dir=$2
+build_modloop_by_flavor() {
+
+  local flavor=$1
+  local modloop_name=modloop-$flavor
   local working_root_fs=$working_directory/root-fs
+  local full_version=$version-$flavor
 
   mkdir -p $working_directory/new-$modloop_name
 
@@ -106,16 +108,15 @@ build_modloop_by_name() {
   rm -f $kernel_dir/$modloop_name
 
   # pick new modules
-  mkdir -p $working_directory/new-$modloop_name/modules/$version-rpi/extra
-  cp -r $extra_dir/* $working_directory/new-$modloop_name/modules/$version-rpi/extra
-  rm -rf $extra_dir
+  mkdir -p $working_directory/new-$modloop_name/modules/$full_version/extra
+  cp -r $extra_dir/$flavor/* $working_directory/new-$modloop_name/modules/$full_version/extra
 
   # build squashfs
   mkdir -p $working_root_fs
   ln -s $working_directory/new-$modloop_name $working_root_fs/lib
-  depmod -a -b $working_root_fs $version-rpi
+  depmod -a -b $working_root_fs $full_version
   rm -rf $working_root_fs
-  mksquashfs $working_directory/new-$modloop_name $kernel_dir/$modloop_name -comp xz -exit-on-error
+  mksquashfs $working_directory/new-$modloop_name $kernel_dir/$modloop_name -comp xz -exit-on-error -all-root
   rm -rf $working_directory/new-$modloop_name
 }
 
