@@ -79,7 +79,28 @@ rm /tmp/kernel-*.tar.gz
 
 root@rpi3-devel :
 ```
+su - builder
 
+sudo apk add --no-cache --virtual .build-utils tar
+mkdir -p /tmp/update-config
+cd /tmp/update-config
+
+cp ~/alpine-build-home-resources/deploy-data/files/base-config.tar.gz .
+tar -zxvf base-config.tar.gz
+rm base-config.tar.gz
+tar -zxvf root/todo-hostname.apkovl.tar.gz
+rm -r root
+
+# DO UPDATES IN .
+
+mkdir root
+tar --owner=root --group=root -zcvf root/todo-hostname.apkovl.tar.gz etc
+rm -r etc
+tar --owner=root --group=root -zcvf base-config.tar.gz root
+rm -r root
+
+rm -rf /tmp/update-config
+sudo apk del .build-utils
 ```
 
 # old
