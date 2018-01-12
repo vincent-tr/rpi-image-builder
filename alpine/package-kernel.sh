@@ -121,6 +121,22 @@ build_modloop_by_flavor() {
 }
 
 package() {
+  echo "PACKAGING"
+
+  local root_fs=$working_directory/root
+
+  cp -r $kernel_dir/dtbs/* $root_fs
+  mkdir -p $root_fs/boot
+  for $flavor in rpi rpi2; do
+    cp \
+      $kernel_dir/System.map-$flavor \
+      $kernel_dir/config-$flavor \
+      $kernel_dir/initramfs-$flavor \
+      $kernel_dir/modloop-$flavor \
+      $kernel_dir/vmlinuz-$flavor \
+      $root_fs/boot
+  done
+
   echo TODO
 }
 
