@@ -45,20 +45,14 @@ TODO:
  - lirc (+plugin)
  - sysfs ac drivers
 
-# Build kernel modloop
-
-## modloops build
+# Kernel package
 
 ```
 su - builder
 cd rpi-image-builder/alpine
-./build-linux-modloops.sh
+./package-kernel.sh
+# TODO : package it !
 ```
-
-## modloops install
-
-modloops are /tmp/modloop-rpi /tmp/modloop-rpi2
-TODO : package it !
 
 # Install node from edge
 
@@ -90,8 +84,10 @@ reboot
 
 ### prepare in /tmp
 ```
-update-kernel -a armhf -f rpi2 /tmp
-update-kernel -a armhf -f rpi /tmp
+sudo apk add --no-cache --virtual .build-tools fakeroot
+sudo update-kernel -a armhf -f rpi2 /tmp
+sudo update-kernel -a armhf -f rpi /tmp
+sudo apk del .build-tools
 ```
 
 ### install from local /tmp
