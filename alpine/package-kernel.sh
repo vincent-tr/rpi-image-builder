@@ -28,7 +28,7 @@ build_modules() {
 
   sudo apk add --no-cache --virtual .build-tools make gcc fakeroot
 
-  mkdir -p working_root_fs
+  mkdir -p $working_root_fs
   fakeroot apk -p $working_root_fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
 
   mkdir -p $extra_rpi_dir
