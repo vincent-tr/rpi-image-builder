@@ -123,6 +123,8 @@ build_modloop_by_flavor() {
 package() {
   echo "PACKAGING"
 
+  sudo apk add --no-cache --virtual .build-tools tar
+
   local root_fs=$working_directory/root
 
   mkdir -p $root_fs/boot
@@ -137,9 +139,10 @@ package() {
       $root_fs/boot
   done
 
-  tar -C $working_directory -zcvf $output_dir/kernel-$version.tar.gz root
+  tar --owner=root --group=root -C $working_directory -zcvf $output_dir/kernel-$version.tar.gz root
 
   rm -rf $working_directory
+  sudo apk del .build-tools
 }
 
 main
