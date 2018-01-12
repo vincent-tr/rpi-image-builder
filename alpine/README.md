@@ -67,9 +67,7 @@ cd rpi-image-builder/alpine
 ./package-kernel.sh
 
 # copy on home-resources
-mkdir -p ~/alpine-build-home-resources/kernels
-cp /tmp/kernel-*.tar.gz ~/alpine-build-home-resources/kernels
-# TODO: add it directly to mylife-home-deploy
+cp /tmp/kernel-*.tar.gz ~/alpine-build-home-resources/deploy-data/files
 
 # cleanup
 rm /tmp/kernel-*.tar.gz
