@@ -1,6 +1,6 @@
 # Prepare env
 
-as root :
+root@rpi3-devel :
 ```
 apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi-image-builder/master/alpine/setup-base.sh && chmod +x setup-base.sh && ./setup-base.sh
 ```
@@ -9,8 +9,8 @@ apk add --no-cache wget && wget https://raw.githubusercontent.com/vincent-tr/rpi
 
 ## build
 
+root@rpi3-devel :
 ```
-# as root :
 /home/builder/rpi-image-builder/alpine/abuild-prepare.sh
 
 su - builder
@@ -45,10 +45,11 @@ rm -rf ~/packages
 
 ## test
 
+root@rpi3-devel :
 ```
-sudo cp ~/.abuild/builder-59f0368c.rsa.pub /etc/apk/keys
-sudo sh -c "echo http://home-resources/alpine-packages >> /etc/apk/repositories"
-sudo apk update
+cp ~/.abuild/builder-59f0368c.rsa.pub /etc/apk/keys
+sh -c "echo http://home-resources/alpine-packages >> /etc/apk/repositories"
+apk update
 ```
 
 TODO:
@@ -60,6 +61,7 @@ TODO:
 
 ## build
 
+root@rpi3-devel :
 ```
 su - builder
 cd rpi-image-builder/alpine
@@ -71,6 +73,13 @@ cp /tmp/kernel-*.tar.gz ~/alpine-build-home-resources/deploy-data/files
 
 # cleanup
 rm /tmp/kernel-*.tar.gz
+```
+
+# Config update
+
+root@rpi3-devel :
+```
+
 ```
 
 # old
