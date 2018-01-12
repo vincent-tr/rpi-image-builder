@@ -11,12 +11,12 @@ build_modules_mylife_home_drivers_ac() {
 
   # rpi1
   make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi M=/tmp/mylife-home-drivers-ac/drivers modules
-  cp /tmp/mylife-home-drivers-ac/drivers/*.ko /tmp/extra-rpi
+  cp /tmp/mylife-home-drivers-ac/drivers/*.ko $extra_rpi_dir
   make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi M=/tmp/mylife-home-drivers-ac/drivers clean
 
   # rpi2
   make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi2 M=/tmp/mylife-home-drivers-ac/drivers modules
-  cp /tmp/mylife-home-drivers-ac/drivers/*.ko /tmp/extra-rpi2
+  cp /tmp/mylife-home-drivers-ac/drivers/*.ko $extra_rpi2_dir
   make -C /tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi2 M=/tmp/mylife-home-drivers-ac/drivers clean
 
   # cleanup
@@ -29,8 +29,8 @@ build_modules() {
   sudo apk add --no-cache --virtual .build-tools make gcc fakeroot
   fakeroot apk -p /tmp/root-fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
 
-  mkdir -p /tmp/extra-rpi
-  mkdir -p /tmp/extra-rpi2
+  mkdir -p $extra_rpi_dir
+  mkdir -p $extra_rpi2_dir
 
   build_modules_mylife_home_drivers_ac
 
@@ -45,14 +45,21 @@ build_modloop() {
   sudo apk add --no-cache --virtual .build-tools squashfs-tools
 
   # rpi1
-  mkdir -p /tmp/modloop-rpi
   mkdir -p /tmp/new-modloop-rpi
+
+  # pick existing modules
+  mkdir -p /tmp/modloop-rpi
   sudo mount /media/mmcblk0p1/boot/modloop-rpi /tmp/modloop-rpi -t squashfs -o loop
   cp -r /tmp/modloop-rpi/* /tmp/new-modloop-rpi
   sudo umount /tmp/modloop-rpi
   rmdir /tmp/modloop-rpi
+
+  # pick new modules
   mkdir -p /tmp/new-modloop-rpi/modules/$version-rpi/extra
   cp -r $extra_rpi_dir/* /tmp/new-modloop-rpi/modules/$version-rpi/extra
+  rm -rf $extra_rpi_dir
+
+  # build squashfs
   mkdir -p /tmp/root-fs
   ln -s /tmp/new-modloop-rpi /tmp/root-fs/lib
   depmod -a -b /tmp/root-fs $version-rpi
@@ -61,14 +68,21 @@ build_modloop() {
   rm -rf /tmp/new-modloop-rpi
 
   # rpi2
-  mkdir -p /tmp/modloop-rpi2
   mkdir -p /tmp/new-modloop-rpi2
+
+  # pick existing modules
+  mkdir -p /tmp/modloop-rpi2
   sudo mount /media/mmcblk0p1/boot/modloop-rpi2 /tmp/modloop-rpi2 -t squashfs -o loop
   cp -r /tmp/modloop-rpi2/* /tmp/new-modloop-rpi2
   sudo umount /tmp/modloop-rpi2
   rmdir /tmp/modloop-rpi2
+
+  # pick new modules
   mkdir -p /tmp/new-modloop-rpi2/modules/$version-rpi2/extra
   cp -r $extra_rpi2_dir/* /tmp/new-modloop-rpi2/modules/$version-rpi2/extra
+  rm -rf $extra_rpi2_dir
+
+  # build squashfs
   mkdir -p /tmp/root-fs
   ln -s /tmp/new-modloop-rpi2 /tmp/root-fs/lib
   depmod -a -b /tmp/root-fs $version-rpi2
