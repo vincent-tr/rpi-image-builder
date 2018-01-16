@@ -35,7 +35,7 @@ apk index -o ~/packages/APKINDEX.tar.gz ~/packages/*.apk
 abuild-sign -k ~/.abuild/builder-59f0368c.rsa ~/packages/APKINDEX.tar.gz
 
 # copy on home-resources
-./abuild-deploy.sh ~/packages ~/alpine-packages-home-resources/alpine-packages
+./abuild-deploy.sh ~/packages ~/alpine-packages-home-resources
 
 # cleanup
 rm -rf ~/packages
