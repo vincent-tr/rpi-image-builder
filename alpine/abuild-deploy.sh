@@ -13,5 +13,5 @@ cp $source_dir/APKINDEX.tar.gz $target_dir/$arch
 for file in $source_dir/*.apk
 do
   package_arch=$(tar -zxOf $file .PKGINFO | grep -oE "arch = (.*)" | sed 's/arch = //g')
-  cp $fil $target_dir/$package_arch
+  cp $file $target_dir/$package_arch
 done
