@@ -93,6 +93,7 @@ rm -r root
 
 # DO UPDATES IN .
 
+cd /tmp/update-config
 mkdir root
 tar --owner=root --group=root -zcvf root/todo-hostname.apkovl.tar.gz etc
 rm -r etc
