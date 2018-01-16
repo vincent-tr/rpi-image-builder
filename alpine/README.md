@@ -35,8 +35,9 @@ apk index -o ~/packages/APKINDEX.tar.gz ~/packages/*.apk
 abuild-sign -k ~/.abuild/builder-59f0368c.rsa ~/packages/APKINDEX.tar.gz
 
 # copy on home-resources
-rm -rf ~/alpine-packages-home-resources/alpine-packages/armhf
-mkdir ~/alpine-packages-home-resources/alpine-packages/armhf
+./abuild-deploy.sh ~/packages ~/alpine-packages-home-resources/alpine-packages
+mkdir -p ~/alpine-packages-home-resources/alpine-packages/armhf
+mkdir -p ~/alpine-packages-home-resources/alpine-packages/noarch
 cp ~/packages/* ~/alpine-packages-home-resources/alpine-packages/armhf
 
 # cleanup
