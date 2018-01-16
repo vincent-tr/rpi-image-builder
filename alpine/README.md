@@ -69,10 +69,10 @@ cd rpi-image-builder/alpine
 ./package-kernel.sh
 
 # copy on home-resources
-cp /tmp/kernel-*.tar.gz ~/alpine-build-home-resources/deploy-data/files
+cp /tmp/base-kernel-*.tar.gz ~/alpine-build-home-resources/deploy-data/files
 
 # cleanup
-rm /tmp/kernel-*.tar.gz
+rm /tmp/base-kernel-*.tar.gz
 ```
 
 # Config update
