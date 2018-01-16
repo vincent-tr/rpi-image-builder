@@ -120,6 +120,7 @@ mount -o remount,rw /media/mmcblk0p1/
 rm -rf /media/mmcblk0p1/*
 rm -rf /media/mmcblk0p1/.*
 tar -C /media/mmcblk0p1 -zxvf /tmp/image-rpi-devel-3.7.0-k4.9.65-0.tar.gz
+reboot
 ```
 
 ## on running arch
