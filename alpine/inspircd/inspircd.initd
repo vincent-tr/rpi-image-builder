@@ -1,12 +1,35 @@
 #!/sbin/openrc-run
 
 name=inspircd
-command="/usr/bin/$name"
-command_args="--config=$INSPIRCD_CONFIG_FILE $INSPIRCD_OPTS"
-
-start_stop_daemon_args="--user inspircd:inspircd --pidfile $INSPIRCD_PID_FILE"
 
 depend() {
   need net
   after firewall
+}
+
+checkfolders() {
+  # is it the right place ?
+  # seems that when the package in installed at boot time, this folder is not properly created
+  mkdir -p /run
+  install -o141 -g141 -dm750 /run/inspircd
+}
+
+start() {
+  checkfolders
+
+  ebegin "Starting inspircd"
+  start-stop-daemon --start --quiet \
+    --user inspircd:inspircd \
+    --pidfile "${INSPIRCD_PID_FILE}" \
+    --exec /usr/bin/$name \
+    -- --config="${INSPIRCD_CONFIG_FILE}" "${INSPIRCD_OPTS}"
+  eend $? "Failed to start inspircd"
+}
+
+stop() {
+
+  ebegin "Stopping inspircd"
+  start-stop-daemon --stop --quiet \
+    --pidfile "${INSPIRCD_PID_FILE}"
+  eend $? "Failed to stop inspircd"
 }
