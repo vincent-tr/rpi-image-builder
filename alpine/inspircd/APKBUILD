@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  install -o141 -g141 -dm750 "$pkgdir/var/log/inspircd" "$pkgdir/var/run/inspircd" "$pkgdir/var/lib/inspircd"
+  install -o141 -g141 -dm750 "$pkgdir/var/log/inspircd" "$pkgdir/run/inspircd" "$pkgdir/var/lib/inspircd"
 
   cd "$srcdir/inspircd-$pkgver"
   make DESTDIR="$pkgdir" install
