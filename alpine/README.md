@@ -117,6 +117,10 @@ scp root@home-resources:/home/alpine-build/deploy-data/files/image-rpi-devel-3.7
 mount -o remount,rw /media/mmcblk0p1/
 rm -rf /media/mmcblk0p1/*
 rm -rf /media/mmcblk0p1/.*
+# will output :
+# rm: can't remove '.' or '..'
+# rm: can't remove '.' or '..'
+# it can be ignored
 tar -C /media/mmcblk0p1 -zxvf /tmp/image-rpi-devel-3.7.0-k4.9.65-0.tar.gz
 reboot
 ```
