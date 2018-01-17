@@ -17,6 +17,10 @@ su - builder
 cd rpi-image-builder/alpine
 mkdir -p ~/packages
 
+# copy existing packages in case we dont' want to compile them all
+cp ~/alpine-packages-home-resources/armhf/*.apk ~/packages/
+cp ~/alpine-packages-home-resources/noarch/*.apk ~/packages/
+
 ./abuild-package.sh inspircd ~/packages
 ./abuild-package.sh mylife-home-inspircd-leaf-config ~/packages inspircd
 
