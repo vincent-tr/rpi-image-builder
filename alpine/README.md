@@ -90,15 +90,19 @@ cd /tmp/update-config
 cp ~/alpine-build-home-resources/deploy-data/files/base-config.tar.gz .
 tar -zxvf base-config.tar.gz
 rm base-config.tar.gz
-tar -zxvf root/todo-hostname.apkovl.tar.gz
+mkdir config
+tar -C config -zxvf root/todo-hostname.apkovl.tar.gz
 rm -r root
+cd config
 
 # DO UPDATES IN .
 
 cd /tmp/update-config
 mkdir root
-tar --owner=root --group=root -zcvf root/todo-hostname.apkovl.tar.gz etc
-rm -r etc
+cd config
+tar --owner=root --group=root -zcvf ../root/todo-hostname.apkovl.tar.gz *
+cd ..
+rm -r config
 tar --owner=root --group=root -zcvf base-config.tar.gz root
 rm -r root
 cp base-config.tar.gz ~/alpine-build-home-resources/deploy-data/files/
