@@ -36,7 +36,7 @@ doBackup() {
 
   # remount rw, copy, remount ro
   mount -o remount,rw "$mountPoint"
-  install -D "$targetFile" "$mediaFile"
+  install -pD "$targetFile" "$mediaFile"
   mount -o remount,ro "$mountPoint"
 
   log "Backup : media file backup done"
