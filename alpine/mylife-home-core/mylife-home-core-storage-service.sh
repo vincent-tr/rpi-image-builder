@@ -13,7 +13,8 @@ runInterval=5 # In seconds
 doRestore() {
   if [ -f $mediaFile ]
   then
-    install -o142 -g142 -m644 -pD "$mediaFile" "$targetFile"
+    su - -s /bin/sh -c "mkdir -p $(dirname $targetFile)" mylife-home
+    install -o142 -g142 -m644 -p "$mediaFile" "$targetFile"
     log "Restore : media file installed"
   else
     log "Restore : media file does not exist"
