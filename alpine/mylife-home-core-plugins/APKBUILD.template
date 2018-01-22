@@ -23,8 +23,8 @@ build() {
 }
 
 package() {
-  install -o142 -g142 -dm755 "$pkgdir/home/mylife-home/mylife-home-core/plugins"
+  install -dm755 "$pkgdir/home/mylife-home/mylife-home-core/plugins"
 
   cp -pr "$srcdir/{{plugin-name}}" "$pkgdir/home/mylife-home/mylife-home-core/plugins"
-  chown -R 142:142 "$pkgdir/home/mylife-home/mylife-home-core/plugins/{{plugin-name}}"
+  chown -R 142:142 "$pkgdir/home/mylife-home"
 }

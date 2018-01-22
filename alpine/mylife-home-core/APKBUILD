@@ -23,11 +23,11 @@ build() {
 }
 
 package() {
-  install -o142 -g142 -dm755 "$pkgdir/home/mylife-home"
+  install -dm755 "$pkgdir/home/mylife-home"
 
   install -m755 -D "$srcdir"/mylife-home-core-storage-service.initd "$pkgdir"/etc/init.d/mylife-home-core-storage-service
   install -m755 -D "$srcdir"/mylife-home-core-storage-service.sh "$pkgdir"/usr/bin/mylife-home-core-storage-service
 
   cp -pr "$srcdir/mylife-home-core" "$pkgdir/home/mylife-home"
-  chown -R 142:142 "$pkgdir/home/mylife-home/mylife-home-core"
+  chown -R 142:142 "$pkgdir/home/mylife-home"
 }
