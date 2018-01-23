@@ -135,7 +135,43 @@ reboot
 
 ## on running arch
 
-TODO
+ssh root@rpi-xxx
+```
+scp root@home-resources:/home/alpine-build/deploy-data/files/image-rpi-xxx-minimal.tar.gz /tmp/image.minimal.tar.gz
+rm -rf /boot/*
+rm -rf /boot/.*
+# will output :
+# rm: can't remove '.' or '..'
+# rm: can't remove '.' or '..'
+# it can be ignored
+tar --no-same-owner -C /boot -zxvf /tmp/image.minimal.tar.gz
+reboot
+```
+
+ssh root@rpi-xxx
+```
+umount /.modloop
+umount /media/mmcblk0p1
+# delete the 2 partitions
+# create 1 partition primary with all space
+# change its type to FAT32
+fdisk /dev/mmcblk0
+d
+2
+d
+n
+p
+1
+
+
+t
+c
+w
+mkfs.vfat /dev/mmcblk0p1
+mount -a
+```
+
+deploy from mylife-home-deploy
 
 # old
 
