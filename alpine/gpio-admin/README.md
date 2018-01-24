@@ -1,4 +1,4 @@
-# alpine-inspircd
+# alpine-gpio-admin
 
 ## Prepare
 
