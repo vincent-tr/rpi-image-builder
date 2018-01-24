@@ -59,7 +59,7 @@ TODO:
  - lirc (+plugin)
  - sysfs ac drivers
 
-# Kernel package
+# Kernel package (base-kernel-xxx.tar.gz)
 
 ## build
 
@@ -77,7 +77,7 @@ cp /tmp/base-kernel-*.tar.gz ~/alpine-build-home-resources/deploy-data/files
 rm /tmp/base-kernel-*.tar.gz
 ```
 
-# Config update
+# Config update (base-config.tar.gz)
 
 root@rpi3-devel :
 ```
@@ -114,7 +114,7 @@ sudo apk del .build-utils
 
 # Install image
 
-## On SD card
+## on SD card
 
 TODO
 
