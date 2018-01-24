@@ -40,8 +40,8 @@ package() {
   install -Dm755 "$targetdir/usr/sbin/lircd" "$pkgdir/usr/sbin/lircd"
 
   install -dm755 "$pkgdir/usr/lib"
-  install -m755  "$targetdir/usr/lib/liblirc.so*" "$pkgdir/usr/lib"
-  install -m755  "$targetdir/usr/lib/liblirc_driver.so*" "$pkgdir/usr/lib"
+  cp -d "$targetdir/usr/lib/liblirc.so*" "$pkgdir/usr/lib"
+  cp -d "$targetdir/usr/lib/liblirc_driver.so*" "$pkgdir/usr/lib"
   install -Dm755 "$targetdir/usr/lib/lirc/plugins/default.so" "$pkgdir/usr/lib/lirc/plugins/default.so"
 
   install -dm755 "$pkgdir/var/run/lirc"
