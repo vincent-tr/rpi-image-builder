@@ -1,0 +1,8 @@
+#!/bin/sh
+
+chmod +s /usr/bin/ac_button-admin
+chmod +s /usr/bin/ac_dimmer-admin
+
+modprobe ac_zc
+modprobe ac_button
+modprobe ac_dimmer

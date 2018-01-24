@@ -1,0 +1,35 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-drivers-ac
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="Mylife Home drivers for ac_dimmer and ac_button (admin and kmod loading)"
+arch="all"
+url="https://github.com/mylife-home/mylife-home-drivers-ac"
+license="LGPL3"
+depends="musl"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/mylife-home/mylife-home-drivers-ac/archive/v$pkgver.tar.gz"
+install="mylife-home-drivers-ac.post-install mylife-home-drivers-ac.pre-deinstall"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  cd "$builddir/admin"
+  make
+}
+
+package() {
+  cd "$builddir"
+  make DESTDIR="$pkgdir/usr" install
+
+  # seems that we cannot package with suid bit set
+  # lets package without and add it at post-install
+  chmod -s "$pkgdir/usr/bin/ac_button-admin"
+  chmod -s "$pkgdir/usr/bin/ac_dimmer-admin"
+
+  install -m755 -D "$builddir/modules-load.d_mylife-home-ac.conf" "$pkgdir/etc/modules-load.d/mylife-home-ac.conf"
+  install -m755 -D "$builddir/modprobe.d_mylife-home-ac.conf" "$pkgdir/etc/modprobe.d/mylife-home-ac.conf"
+}

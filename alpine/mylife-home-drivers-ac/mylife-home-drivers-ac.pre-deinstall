@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rmmod ac_dimmer && 0
+rmmod ac_button && 0
+rmmod ac_zc && 0
