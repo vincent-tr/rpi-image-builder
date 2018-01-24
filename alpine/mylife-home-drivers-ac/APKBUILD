@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$builddir"
+  cd "$builddir/admin"
   make DESTDIR="$pkgdir/usr" install
 
   # seems that we cannot package with suid bit set
