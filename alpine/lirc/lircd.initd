@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+name=lircd
+command="/usr/sbin/$name"
+command_args="--nodaemon"
+pidfile="/var/run/lirc/lircd.pid"
+start_stop_daemon_args=""
+command_background="yes"

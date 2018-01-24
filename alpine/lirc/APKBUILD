@@ -12,6 +12,7 @@ makedepends="pkgconfig libxslt python3 python3-dev bash linux-headers" # gcc g++
 source="
   ${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/lirc/files/LIRC/${pkgver}/lirc-${pkgver}.tar.gz
   lirc_options.conf
+  lircd.init.d
   "
 builddir="$srcdir/lirc-$pkgver"
 targetdir="$builddir/target"
@@ -50,5 +51,7 @@ package() {
   install -Dm644 "$targetdir/etc/lirc/lircd.conf" "$pkgdir/etc/lirc/lircd.conf"
   # use custom options
   install -Dm644 "$srcdir/lirc_options.conf" "$pkgdir/etc/lirc/lirc_options.conf"
+
+  install -m755 -D "$srcdir"/lircd.initd "$pkgdir"/etc/init.d/${pkgname}
 }
 
