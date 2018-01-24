@@ -1,0 +1,53 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=lirc
+pkgver=0.10.1
+pkgrel=0
+pkgdesc="Linux Infrared Remote Control"
+arch="all"
+url="http://www.lirc.org/"
+license="GPL2"
+depends="libgcc libstdc++"
+makedepends="pkgconfig gcc g++ make libxslt python3 python3-dev bash linux-headers"
+source="
+  ${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/lirc/files/LIRC/${pkgver}/lirc-${pkgver}.tar.gz
+  lirc_options.conf
+  "
+builddir="$srcdir/lirc-$pkgver"
+targetdir="$builddir/target"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  cd "$builddir"
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var
+
+  make
+}
+
+package() {
+  cd "$builddir"
+  make DESTDIR="$targetdir" install
+
+  # TODO: add a lirc-tool version that keep all files ?
+
+  install -Dm755 "$targetdir/usr/sbin/lircd" "$pkgdir/usr/sbin/lircd"
+
+  install -Dm755 "$targetdir/usr/lib/liblirc.so*" "$pkgdir/usr/lib/"
+  install -Dm755 "$targetdir/usr/lib/liblirc_driver.so*" "$pkgdir/usr/lib/"
+  install -Dm755 "$targetdir/usr/lib/lirc/plugins/default.so" "$pkgdir/usr/lib/lirc/plugins/default.so"
+
+  install -dm755 "$pkgdir/var/run/lirc"
+
+  install -dm755 "$pkgdir/etc/lirc/lircd.conf.d"
+  install -Dm644 "$targetdir/etc/lirc/lircd.conf" "$pkgdir/etc/lirc/lircd.conf"
+  # use custom options
+  install -Dm644 "$srcdir/lirc_options.conf" "$pkgdir/etc/lirc/lirc_options.conf"
+}
+
