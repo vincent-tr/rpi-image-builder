@@ -11,6 +11,7 @@ depends="nodejs mylife-home-pm2-config"
 makedepends="nodejs-npm git"
 source="storage-service.initd storage-service.sh"
 install="mylife-home-core{{flavor}}.post-install mylife-home-core{{flavor}}.pre-deinstall"
+flavor={{flavor}}
 
 prepare() {
   default_prepare
@@ -20,6 +21,11 @@ build() {
   cd "$srcdir" && npm install --global-style --production --no-optional --no-save --no-package-lock "github:mylife-home/mylife-home-core#v$pkgver"
   mv "$srcdir/node_modules/mylife-home-core" "$srcdir/mylife-home-core{{flavor}}"
   rm -rf "$srcdir/node_modules"
+
+  if [[ $flavor ]]
+  then
+    sed -i '2a\    "suffix"         : "$flavor",' "$srcdir/mylife-home-core{{flavor}}/conf/config.json"
+  fi
 }
 
 package() {
