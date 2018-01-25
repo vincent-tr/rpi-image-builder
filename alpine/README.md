@@ -40,6 +40,12 @@ cp ~/alpine-packages-home-resources/noarch/*.apk ~/packages/
 ./mylife-home-core-plugins/configure.sh hw-sensors && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core
 ./mylife-home-core-plugins/configure.sh hw-sysfs && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core
 
+./mylife-home-core-plugins/configure.sh ui-base && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-vpanel
+./mylife-home-core-plugins/configure.sh vpanel-base && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-vpanel
+./mylife-home-core-plugins/configure.sh vpanel-colors && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-vpanel
+./mylife-home-core-plugins/configure.sh vpanel-selectors && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-vpanel
+./mylife-home-core-plugins/configure.sh vpanel-timers && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-vpanel
+
 apk index -o ~/packages/APKINDEX.tar.gz ~/packages/*.apk
 abuild-sign -k ~/.abuild/builder-59f0368c.rsa ~/packages/APKINDEX.tar.gz
 

@@ -10,6 +10,8 @@ cf ../README.md
 ```
 su - builder
 mkdir -p ~/packages
+
+# drivers
 ./configure.sh hw-blaster
 ../abuild-package.sh $(basename $(pwd)) ~/packages pi-blaster
 ./configure.sh hw-lirc
@@ -18,6 +20,21 @@ mkdir -p ~/packages
 ../abuild-package.sh $(basename $(pwd)) ~/packages
 ./configure.sh hw-sysfs
 ../abuild-package.sh $(basename $(pwd)) ~/packages
+
+# vpanel
+
+./configure.sh ui-base
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh vpanel-base
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh vpanel-colors
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh vpanel-selectors
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh vpanel-timers
+../abuild-package.sh $(basename $(pwd)) ~/packages
+
+# core drivers
 ```
 
 ## Test package

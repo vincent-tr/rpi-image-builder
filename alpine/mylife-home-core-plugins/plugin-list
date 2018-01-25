@@ -2,3 +2,8 @@ hw-blaster,1.0.0,,yes,pi-blaster
 hw-lirc,1.0.1,,yes,lirc
 hw-sensors,1.0.0,,yes
 hw-sysfs,1.0.0,,no
+ui-base,1.0.0,vpanel,yes
+vpanel-base,1.0.0,vpanel,yes
+vpanel-colors,1.0.0,vpanel,yes
+vpanel-selectors,1.0.0,vpanel,yes
+vpanel-timers,1.0.0,vpanel,yes
