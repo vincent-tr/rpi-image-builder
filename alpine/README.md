@@ -116,7 +116,7 @@ sudo apk del .build-utils
 
 ## on SD card
 
-format sd card as fat32 (label : alpine)
+disk utility : format sd card as fat32 (label : alpine)
 on local OSX:
 ```
 scp root@home-resources:/home/alpine-build/deploy-data/files/image-xxx.tar.gz /tmp
