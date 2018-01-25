@@ -1,0 +1,3 @@
+#!/bin/sh
+
+su -l mylife-home -s /bin/sh -c "pm2 delete mylife-home-core{{flavor}} && pm2 dump"

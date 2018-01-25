@@ -1,0 +1,33 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-core{{flavor}}
+pkgver=1.0.5
+pkgrel=0
+pkgdesc="MyLife Home Core"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="nodejs mylife-home-pm2-config"
+makedepends="nodejs-npm git"
+source="storage-service.initd storage-service.sh"
+install="mylife-home-core.post-install mylife-home-core.pre-deinstall"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  cd "$srcdir" && npm install --global-style --production --no-optional --no-save --no-package-lock "github:mylife-home/mylife-home-core#v$pkgver"
+  mv "$srcdir/node_modules/mylife-home-core" "$srcdir/mylife-home-core{{flavor}}"
+  rm -rf "$srcdir/node_modules"
+}
+
+package() {
+  install -dm755 "$pkgdir/home/mylife-home"
+
+  install -m755 -D "$srcdir"/storage-service.initd "$pkgdir"/etc/init.d/mylife-home-core{{flavor}}-storage-service
+  install -m755 -D "$srcdir"/storage-service.sh "$pkgdir"/usr/bin/mylife-home-core{{flavor}}-storage-service
+
+  cp -pr "$srcdir/mylife-home-core{{flavor}}" "$pkgdir/home/mylife-home"
+  chown -R 142:142 "$pkgdir/home/mylife-home"
+}

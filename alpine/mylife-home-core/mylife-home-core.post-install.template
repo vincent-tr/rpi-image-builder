@@ -21,9 +21,9 @@ cat <<EOF >> "$pm2_file"
     "automation": true,
     "pmx": true,
     "vizion": true,
-    "name": "mylife-home-core",
+    "name": "mylife-home-core{{flavor}}",
     "node_args": [],
-    "pm_exec_path": "/home/mylife-home/mylife-home-core/bin/server.js",
+    "pm_exec_path": "/home/mylife-home/mylife-home-core{{flavor}}/bin/server.js",
     "env": {
       "PM2_USAGE": "CLI",
       "CHARSET": "UTF-8",
@@ -38,13 +38,13 @@ cat <<EOF >> "$pm2_file"
       "SHLVL": "1",
       "USER": "mylife-home",
       "PM2_HOME": "/home/mylife-home/.pm2",
-      "mylife-home-core": {}
+      "mylife-home-core{{flavor}}": {}
     },
     "pm_cwd": "/home/mylife-home",
     "exec_interpreter": "node",
-    "pm_out_log_path": "/home/mylife-home/.pm2/logs/mylife-home-core-out-1.log",
-    "pm_err_log_path": "/home/mylife-home/.pm2/logs/mylife-home-core-error-1.log",
-    "pm_pid_path": "/home/mylife-home/.pm2/pids/mylife-home-core-1.pid",
+    "pm_out_log_path": "/home/mylife-home/.pm2/logs/mylife-home-core{{flavor}}-out-1.log",
+    "pm_err_log_path": "/home/mylife-home/.pm2/logs/mylife-home-core{{flavor}}-error-1.log",
+    "pm_pid_path": "/home/mylife-home/.pm2/pids/mylife-home-core{{flavor}}-1.pid",
     "km_link": false,
     "vizion_running": false,
     "NODE_APP_INSTANCE": 0,
@@ -92,7 +92,7 @@ cat <<EOF >> "$pm2_file"
       },
       "excludedHooks": [],
       "module_conf": {},
-      "module_name": "mylife-home-core",
+      "module_name": "mylife-home-core{{flavor}}",
       "module_version": "2.7.2",
       "pmx_version": "1.5.4",
       "error": true

@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
 
-name=mylife-home-core-storage-service
+name=mylife-home-core{{flavor}}-storage-service
 command="/usr/bin/$name"
 command_args=""
 pidfile="/var/run/$name.pid"

@@ -2,11 +2,11 @@
 
 # https://gist.github.com/shawnrice/11076762
 
-logFile="/var/log/mylife-home-core-storage-service.log"
+logFile="/var/log/mylife-home-core{{flavor}}-storage-service.log"
 
 mountPoint="/media/mmcblk0p1"
-mediaFile="$mountPoint/mylife-home/mylife-home-core-components.json"
-targetFile="/home/mylife-home/mylife-home-core/data/components.json"
+mediaFile="$mountPoint/mylife-home/mylife-home-core{{flavor}}-components.json"
+targetFile="/home/mylife-home/mylife-home-core{{flavor}}/data/components.json"
 
 runInterval=5 # In seconds
 

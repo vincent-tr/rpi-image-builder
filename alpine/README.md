@@ -26,7 +26,10 @@ cp ~/alpine-packages-home-resources/noarch/*.apk ~/packages/
 
 ./abuild-package.sh nodejs-pm2 ~/packages
 ./abuild-package.sh mylife-home-pm2-config ~/packages nodejs-pm2
-./abuild-package.sh mylife-home-core ~/packages nodejs-pm2,mylife-home-pm2-config
+
+./mylife-home-core/configure.sh && ./abuild-package.sh mylife-home-core ~/packages nodejs-pm2,mylife-home-pm2-config
+./mylife-home-core/configure.sh drivers && ./abuild-package.sh mylife-home-core ~/packages nodejs-pm2,mylife-home-pm2-config
+./mylife-home-core/configure.sh vpanel && ./abuild-package.sh mylife-home-core ~/packages nodejs-pm2,mylife-home-pm2-config
 
 ./abuild-package.sh gpio-admin ~/packages
 ./abuild-package.sh mylife-home-drivers-ac ~/packages

@@ -9,6 +9,11 @@ cf ../README.md
 ```
 su - builder
 mkdir -p ~/packages
+./configure.sh
+../abuild-package.sh $(basename $(pwd)) ~/packages mylife-home-pm2-config
+./configure.sh drivers
+../abuild-package.sh $(basename $(pwd)) ~/packages mylife-home-pm2-config
+./configure.sh vpanel
 ../abuild-package.sh $(basename $(pwd)) ~/packages mylife-home-pm2-config
 ```
 
