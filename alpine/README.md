@@ -48,9 +48,9 @@ cp ~/alpine-packages-home-resources/noarch/*.apk ~/packages/
 
 ./mylife-home-core-plugins/configure.sh hw-absoluta && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-drivers
 ./mylife-home-core-plugins/configure.sh hw-arduino-home && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-drivers
+./mylife-home-core-plugins/configure.sh hw-broadlink && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-drivers
 ./mylife-home-core-plugins/configure.sh hw-mpd && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-drivers
 ./mylife-home-core-plugins/configure.sh hw-tahoma && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-drivers
-./mylife-home-core-plugins/configure.sh hw-broadlink && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core-drivers
 
 apk index -o ~/packages/APKINDEX.tar.gz ~/packages/*.apk
 abuild-sign -k ~/.abuild/builder-59f0368c.rsa ~/packages/APKINDEX.tar.gz
