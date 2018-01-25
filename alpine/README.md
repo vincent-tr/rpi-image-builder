@@ -23,6 +23,7 @@ cp ~/alpine-packages-home-resources/noarch/*.apk ~/packages/
 
 ./abuild-package.sh inspircd ~/packages
 ./abuild-package.sh mylife-home-inspircd-leaf-config ~/packages inspircd
+./abuild-package.sh mylife-home-inspircd-hub-config ~/packages inspircd
 
 ./abuild-package.sh nodejs-pm2 ~/packages
 ./abuild-package.sh mylife-home-pm2-config ~/packages nodejs-pm2

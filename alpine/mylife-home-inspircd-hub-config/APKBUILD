@@ -1,0 +1,36 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=mylife-home-inspircd-hub-config
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="mylife-home : inspircd configuration for hub node"
+arch="noarch"
+url="http://apps.mti-team2.dyndns.org/"
+license="GPL3"
+depends="inspircd"
+source="
+  defines.sh
+  gen-links.sh
+  inspircd.conf
+  inspircd.motd
+  inspircd.rules
+"
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  :
+}
+
+package() {
+  install -dm755 "$pkgdir/etc/inspircd"
+
+  install -m755 "$srcdir/defines.sh" "$pkgdir/etc/inspircd/defines.sh"
+  install -m755 "$srcdir/gen-links.sh" "$pkgdir/etc/inspircd/gen-links.sh"
+  install -m644 "$srcdir/inspircd.conf" "$pkgdir/etc/inspircd/inspircd.conf"
+  install -m644 "$srcdir/inspircd.motd" "$pkgdir/etc/inspircd/inspircd.motd"
+  install -m644 "$srcdir/inspircd.rules" "$pkgdir/etc/inspircd/inspircd.rules"
+}
+
