@@ -17,7 +17,6 @@ do
     plugin_arch="$(apk --print-arch)"
   fi
 
-
   if [[ $plugin_core_flavor ]]
   then
     plugin_core_flavor=-$plugin_core_flavor
