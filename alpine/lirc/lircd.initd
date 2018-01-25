@@ -1,6 +1,28 @@
 #!/sbin/openrc-run
 
 name=lircd
-command="/usr/sbin/$name"
-command_args=""
 pidfile="/var/run/lirc/lircd.pid"
+
+checkfolders() {
+  # is it the right place ?
+  # seems that when the package in installed at boot time, this folder is not properly created
+  mkdir -p /run/lirc
+}
+
+start() {
+  checkfolders
+
+  ebegin "Starting lircd"
+  start-stop-daemon --start --quiet \
+    --pidfile "${pidfile}" \
+    --exec /usr/sbin/$name
+  eend $? "Failed to start lircd"
+}
+
+stop() {
+
+  ebegin "Stopping lircd"
+  start-stop-daemon --stop --quiet \
+    --pidfile "${pidfile}"
+  eend $? "Failed to stop lircd"
+}
