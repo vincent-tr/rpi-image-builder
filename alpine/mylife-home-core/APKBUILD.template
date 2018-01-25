@@ -10,7 +10,7 @@ license="GPL3"
 depends="nodejs mylife-home-pm2-config"
 makedepends="nodejs-npm git"
 source="storage-service.initd storage-service.sh"
-install="mylife-home-core.post-install mylife-home-core.pre-deinstall"
+install="mylife-home-core{{flavor}}.post-install mylife-home-core{{flavor}}.pre-deinstall"
 
 prepare() {
   default_prepare
