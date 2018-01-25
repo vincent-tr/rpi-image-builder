@@ -9,6 +9,6 @@ vpanel-selectors,1.0.0,vpanel,yes
 vpanel-timers,1.0.0,vpanel,yes
 hw-absoluta,1.0.0,drivers,yes
 hw-arduino-home,1.0.0,drivers,yes
-hw-mpd,1.0.0,drivers,yes
-hw-tahoma,1.0.0,drivers,yes
 hw-broadlink,1.0.0,drivers,yes
+hw-mpd,1.0.0,drivers,yes
+hw-tahoma,1.0.0,drivers,no
