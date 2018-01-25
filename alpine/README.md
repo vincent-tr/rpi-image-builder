@@ -58,8 +58,6 @@ apk update
 
 TODO:
  - pi-blaster (+plugin)
- - lirc (+plugin)
- - sysfs ac drivers
 
 # Kernel package (base-kernel-xxx.tar.gz)
 
