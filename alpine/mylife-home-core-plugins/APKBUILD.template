@@ -9,7 +9,7 @@ url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
 depends="mylife-home-core{{plugin-core-flavor}} {{plugin-dependencies}}"
 makedepends="nodejs-npm git python"
-core_version="$(apk info -vv | grep '^mylife-home-core-\d' | grep -o '\(\d\+\.\d\+\.\d\+\)')"
+core_version="$(apk info -vv | grep '^mylife-home-core{{plugin-core-flavor}}-\d' | grep -o '\(\d\+\.\d\+\.\d\+\)')"
 
 prepare() {
   default_prepare
