@@ -22,7 +22,6 @@ mkdir -p ~/packages
 ../abuild-package.sh $(basename $(pwd)) ~/packages
 
 # vpanel
-
 ./configure.sh ui-base
 ../abuild-package.sh $(basename $(pwd)) ~/packages
 ./configure.sh vpanel-base
