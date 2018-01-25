@@ -34,6 +34,17 @@ mkdir -p ~/packages
 ../abuild-package.sh $(basename $(pwd)) ~/packages
 
 # core drivers
+./configure.sh hw-absoluta
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh hw-arduino-home
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh hw-mpd
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh hw-tahoma
+../abuild-package.sh $(basename $(pwd)) ~/packages
+./configure.sh hw-broadlink
+../abuild-package.sh $(basename $(pwd)) ~/packages
+
 ```
 
 ## Test package
