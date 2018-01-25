@@ -1,4 +1,4 @@
 hw-blaster,1.0.0,yes,pi-blaster
-hw-lirc,1.0.0,yes,lirc
+hw-lirc,1.0.1,yes,lirc
 hw-sensors,1.0.0,yes
 hw-sysfs,1.0.0,no
