@@ -30,5 +30,5 @@ do
   sed -i "s/{{plugin-arch}}/$plugin_arch/g" $base_dir/APKBUILD
   sed -i "s/{{plugin-dependencies}}/$plugin_dependencies/g" $base_dir/APKBUILD
 
-  echo "configured $plugin_name-$plugin_version (arch=$plugin_arch, dependencies=$plugin_dependencies)"
+  echo "configured $plugin_name-$plugin_version ($arch=$plugin_arch, core-flavor=$plugin_core_flavor, dependencies=$plugin_dependencies)"
 done
