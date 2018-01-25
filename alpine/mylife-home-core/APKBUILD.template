@@ -24,7 +24,7 @@ build() {
 
   if [[ $flavor ]]
   then
-    sed -i '2a\    "suffix"         : "$flavor",' "$srcdir/mylife-home-core{{flavor}}/conf/config.json"
+    sed -i '2a\    "suffix"         : "{{flavor}}",' "$srcdir/mylife-home-core{{flavor}}/conf/config.json"
   fi
 }
 
