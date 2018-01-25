@@ -7,7 +7,7 @@ pkgdesc="MyLife Home Core Plugin : {{plugin-name}}"
 arch="{{plugin-arch}}"
 url="http://apps.mti-team2.dyndns.org/"
 license="GPL3"
-depends="mylife-home-core {{plugin-dependencies}}"
+depends="mylife-home-core{{plugin-core-flavor}} {{plugin-dependencies}}"
 makedepends="nodejs-npm git python"
 core_version="$(apk info -vv | grep '^mylife-home-core-\d' | grep -o '\(\d\+\.\d\+\.\d\+\)')"
 
@@ -23,8 +23,8 @@ build() {
 }
 
 package() {
-  install -dm755 "$pkgdir/home/mylife-home/mylife-home-core/plugins"
+  install -dm755 "$pkgdir/home/mylife-home/mylife-home-core{{plugin-core-flavor}}/plugins"
 
-  cp -pr "$srcdir/{{plugin-name}}" "$pkgdir/home/mylife-home/mylife-home-core/plugins"
+  cp -pr "$srcdir/{{plugin-name}}" "$pkgdir/home/mylife-home/mylife-home-core{{plugin-core-flavor}}/plugins"
   chown -R 142:142 "$pkgdir/home/mylife-home"
 }
