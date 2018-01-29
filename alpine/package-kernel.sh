@@ -37,6 +37,7 @@ build_modules() {
   mkdir -p $extra_dir/rpi2
 
   build_modules_mylife_home_drivers_ac $working_root_fs
+  build_modules_mylife_home_drivers_pwm $working_root_fs
 
   rm -rf $working_root_fs
   sudo apk del .build-tools
@@ -56,6 +57,27 @@ build_modules_mylife_home_drivers_ac() {
 
   # rpi2
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers modules
+  cp $src_dir/drivers/*.ko $extra_dir/rpi2
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers clean
+
+  # cleanup
+  rm -rf $src_dir
+}
+
+build_modules_mylife_home_drivers_pwm() {
+
+  local src_dir=$working_directory/mylife-home-drivers-pwm
+  local working_root_fs=$1
+
+  git clone https://github.com/mylife-home/mylife-home-drivers-pwm $src_dir
+
+  # rpi1
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers MYLIFE_ARCH=MYLIFE_ARCH_RPI1 modules
+  cp $src_dir/drivers/*.ko $extra_dir/rpi
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi M=$src_dir/drivers clean
+
+  # rpi2
+  make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers MYLIFE_ARCH=MYLIFE_ARCH_RPI2 modules
   cp $src_dir/drivers/*.ko $extra_dir/rpi2
   make -C $working_root_fs/usr/src/linux-headers-$version-rpi2 M=$src_dir/drivers clean
 
