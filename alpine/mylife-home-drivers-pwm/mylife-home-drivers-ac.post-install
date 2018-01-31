@@ -1,0 +1,5 @@
+#!/bin/sh
+
+chmod +s /usr/bin/pwm-admin
+
+modprobe dma_pwm

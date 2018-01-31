@@ -34,6 +34,7 @@ cp ~/alpine-packages-home-resources/noarch/*.apk ~/packages/
 
 ./abuild-package.sh gpio-admin ~/packages
 ./abuild-package.sh mylife-home-drivers-ac ~/packages
+./abuild-package.sh mylife-home-drivers-pwm ~/packages
 ./abuild-package.sh lirc ~/packages
 
 ./mylife-home-core-plugins/configure.sh hw-blaster && ./abuild-package.sh mylife-home-core-plugins ~/packages nodejs-pm2,mylife-home-pm2-config,mylife-home-core,pi-blaster
