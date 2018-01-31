@@ -30,5 +30,4 @@ package() {
   chmod -s "$pkgdir/usr/bin/pwm-admin"
 
   install -m755 -D "$builddir/modules-load.d_mylife-home-pwm.conf" "$pkgdir/etc/modules-load.d/mylife-home-pwm.conf"
-  install -m755 -D "$builddir/modprobe.d_mylife-home-pwm.conf" "$pkgdir/etc/modprobe.d/mylife-home-pwm.conf"
 }
