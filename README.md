@@ -100,3 +100,6 @@ qemu-system-arm \
 
 
 qemu-img resize target.img 4G
+
+## TODO
+* test cross build from x64 to rpi : https://github.com/alpinelinux/alpine-chroot-install
